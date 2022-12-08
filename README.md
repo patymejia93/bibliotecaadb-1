@@ -1,27 +1,119 @@
-# Sakai
+## CLI Overview and Command Reference
+https://angular.io/cli
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.4.
+## Prime NG
+https://www.primefaces.org/primeng/
 
-## Development server
+## Prime Flex
+https://www.primefaces.org/primeflex/
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Prime Designer NG
+https://primefaces.org/designer-ng/
 
-## Code scaffolding
+## Prime NG Icons Library
+https://www.primefaces.org/primeng/icons
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## How To Bind Specific Keys to the Keyup and Keydown Events in Angular
+https://www.digitalocean.com/community/tutorials/angular-binding-keyup-keydown-events
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## CONFIGURACIONES ADICIONALES
 
-## Running unit tests
+## Paso 1 Scheme Prime NG
+En el angular.json adicionar :
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+  "styles": [
+	  "node_modules/primeng/resources/themes/saga-blue/theme.css",
+	  "node_modules/primeng/resources/primeng.min.css",
+	  "node_modules/primeflex/primeflex.css",
+	  "node_modules/primeicons/primeicons.css",
+	  "node_modules/quill/dist/quill.snow.css",
+  ],
 
-## Running end-to-end tests
+## Paso 2 ADD tsconfig.app.json
+{
+    "compilerOptions": {
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+    }
+}
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Paso 3 ADD tsconfig.json
+{
+    "compilerOptions": {
+        "resolveJsonModule": true,
+        "esModuleInterop": true,    
+    }
+}
 
-## Further help
+## Paso 4 ADD angular.json Configuring CommonJS dependencies
+{
+  "projects": {
+    "my-proyect": {
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "allowedCommonJsDependencies": [
+              "quill"
+             ],
+          },
+        },
+      }
+    }
+  },
+}
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Paso 5 Modify angular.json
+{
+  "projects": {
+    "my-proyect": {
+      "architect": {
+        "build": {
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "1.5mb"
+                }
+              ],
+            },
+          },
+        },
+      }
+    }
+  }
+}
+
+## RUN ESLint
+    ng lint
+
+# RUN ESLint
+    ng lint
+
+## Run Proyects
+ng serve -o
+
+## Comandos de Angular ##
+
+# generate module
+    ng g m [folder]/[folder] --flat
+
+# generate component 
+    ng g c components/[nombre_componente] --skip-tests --inline-style
+    ng g c components/[nombre_componente] --skip-tests 
+
+# generate servicio
+    ng generate s services/[nombre_servicio] --skip-tests
+
+# generate interface
+    ng generate interface interfaces/[nombre_interface].interface --prefix=I 
+
+# generate guards
+    ng generate guard guards/[nombre_guard] --skip-tests
+
+# generar para Produccion
+    ng build --watch --configuration development
+
