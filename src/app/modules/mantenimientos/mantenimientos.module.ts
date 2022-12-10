@@ -15,7 +15,9 @@ import { DropdownModule } from 'primeng/dropdown';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { MessageModule } from 'primeng/message';
 import { ToastModule } from 'primeng/toast';
-import { ConfirmationService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -36,10 +38,14 @@ import { ConfirmationService } from 'primeng/api';
         DropdownModule,
         ConfirmDialogModule,
         MessageModule,
-        ToastModule
+        ToastModule,
+        ProgressSpinnerModule,
+        ReactiveFormsModule,
+        FormsModule
     ],
     providers: [
-        ConfirmationService
+        ConfirmationService,
+        MessageService
     ]
 })
 export class MantenimientosModule { }

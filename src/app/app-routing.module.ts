@@ -2,6 +2,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { NotfoundComponent } from './modules/demo/components/notfound/notfound.component';
 import { AppLayoutComponent } from "./modules/layout/app.layout.component";
+import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes =
     [
@@ -44,7 +45,8 @@ const routes: Routes =
                     path: 'pages',
                     loadChildren: () => import('./modules/demo/components/pages/pages.module').then(m => m.PagesModule)
                 }
-            ]
+            ],
+            canActivate: [AuthGuard]
         },
         {
             path: 'auth',
