@@ -32,7 +32,7 @@
                             BIBLIOTECA ADB
                         </div>
                         <span class="text-600 font-medium"
-                            >Inicia sesión para continuar</span
+                            >¡Bienvenido!</span
                         >
                     </div>
                     <div>
@@ -43,7 +43,6 @@
                         >
                         <input
                             type="text"
-                            placeholder="Email address"
                             pInputText
                             formControlName="username"
                             class="w-full md:w-30rem mb-5"
@@ -56,14 +55,13 @@
                         >
                         <p-password
                             id="password1"
-                            placeholder="Password"
                             [toggleMask]="true"
                             formControlName="password"
                             styleClass="mb-5"
                             inputStyleClass="w-full p-3 md:w-30rem"
                         ></p-password>
                         <div
-                            class="flex align-items-center justify-content-between mb-5 gap-5"
+                            class="flex align-items-center justify-content-between"
                         >
                         </div>
                         <button
@@ -71,11 +69,29 @@
                             pRipple
                             label="Iniciar sesión"
                             class="w-full p-3 text-xl"
-
                             [disabled]="formLogin.invalid"
                         ></button>
                     </div>
                 </form>
+                <div
+                class="flex align-items-center justify-content-between mb-5 gap-5"
+            >
+            </div>
+                <div>
+                    <label
+                    class="block text-900 font-small text-xl mb-2"
+                    ></label>
+                   
+                    <label
+                       
+                        class="block text-600 font-small text-xl mb-2"
+                        >¿No tienes cuenta?</label>
+                        <label
+                        class="block text-600 font-small text-xl mb-2" onclick=""
+                        >Puedes consultar materiales aquí:</label>
+                        <a class="block text-600 font-small text-xl mb-2"   href='/busquedasExternas/materialEscrito' >Material Escrito</a>
+                        <a class="block text-600 font-small text-xl mb-2"   href='/busquedasExternas/materialAudiovisual' >Material Audiovisual</a>
+                </div>
             </div>
         </div>
     </div>

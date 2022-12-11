@@ -93,7 +93,7 @@
         <form [formGroup]="formMatEsc!">
             <div class="grid">
                 <div class="col-12">
-                    <label for="float-input">Titulo</label>
+                    <label for="float-input">Título</label>
                     <span class="p-float-label">
                         <input
                             type="text"
@@ -117,7 +117,7 @@
             </div>
             <div class="grid">
                 <div class="col-12">
-                    <label for="float-input">Numero Paginas</label>
+                    <label for="float-input">Número Páginas</label>
                     <input
                         type="text"
                         pInputText
@@ -128,7 +128,7 @@
             </div>
             <div class="grid">
                 <div class="col-12">
-                    <label for="float-input">Editorial:</label>
+                    <label for="float-input">Editorial</label>
                     <input
                         type="text"
                         pInputText
@@ -139,7 +139,7 @@
             </div>
             <div class="grid">
                 <div class="col-12">
-                    <label for="float-input">ISBN:</label>
+                    <label for="float-input">ISBN</label>
                     <input
                         type="text"
                         pInputText
@@ -150,7 +150,7 @@
             </div>
             <div class="grid">
                 <div class="col-12">
-                    <label for="float-input">Anio Publicacion:</label>
+                    <label for="float-input">Año Publicación</label>
                     <input
                         type="text"
                         pInputText
@@ -159,21 +159,9 @@
                     />
                 </div>
             </div>
-            <div class="grid">
-                <div class="col-12">
-                    <label for="float-input">Unidades Disponibles:</label>
-                    <input
-                        type="text"
-                        pInputText
-                        class=" w-full"
-                        formControlName="ctgMaterialEscritoUnidadesDisponibles"
-                    />
-                </div>
-            </div>
-
             <div class="grid" formGroupName="ctgTipoArticulo">
                 <div class="col-12">
-                    <label for="float-input">Tipo Articulo:</label>
+                    <label for="float-input">Tipo Artículo</label>
                     <p-dropdown
                         [options]="status"
                         optionValue="value"
@@ -186,7 +174,7 @@
 
             <div class="grid">
                 <div class="col-12">
-                    <label for="float-input">Periodicidad:</label>
+                    <label for="float-input">Periodicidad</label>
                     <input
                         type="text"
                         pInputText
@@ -197,7 +185,7 @@
             </div>
            <!--<div class="grid">
                 <div class="col-12">
-                    <label for="float-input">Fecha Publicacion:</label>
+                    <label for="float-input">Fecha Publicacion</label>
                     <input
                         type="text"
                         pInputText
@@ -208,7 +196,7 @@
             </div>-->
             <div class="grid">
                 <div class="col-12">
-                    <label for="float-input">Tema:</label>
+                    <label for="float-input">Tema</label>
                     <input
                         type="text"
                         pInputText
@@ -219,7 +207,7 @@
             </div>
             <div class="grid">
                 <div class="col-12">
-                    <label for="float-input">Idioma:</label>
+                    <label for="float-input">Idioma</label>
                     <input
                         type="text"
                         pInputText
@@ -230,12 +218,23 @@
             </div>
             <div class="grid">
                 <div class="col-12">
-                    <label for="float-input">Informacion Adicional:</label>
+                    <label for="float-input">Información Adicional</label>
                     <input
                         type="text"
                         pInputText
                         class=" w-full"
                         formControlName="ctgMaterialEscritoInformacionAdicional"
+                    />
+                </div>
+            </div>
+            <div class="grid">
+                <div class="col-12">
+                    <label for="float-input">Unidades Disponibles</label>
+                    <input
+                        type="text"
+                        pInputText
+                        class=" w-full"
+                        formControlName="ctgMaterialEscritoUnidadesDisponibles"
                     />
                 </div>
             </div>
@@ -256,7 +255,7 @@
                         pButton
                         type="submit"
                         label="Guardar"
-                        (click)="sendData()"
+                        (click)="sendData(); displayE = false"
                         icon="pi pi-file-edit"
                     ></button>
                 </div>
@@ -277,7 +276,7 @@
         <form [formGroup]="formMatEscE!">
             <div class="grid">
                 <div class="col-12">
-                    <label for="float-input">Titulo</label>
+                    <label for="float-input">Título</label>
                     <span class="p-float-label">
                         <input
                             type="text"
@@ -303,7 +302,7 @@
 
             <div class="grid">
                 <div class="col-12">
-                    <label for="float-input">Numero Paginas</label>
+                    <label for="float-input">Número Páginas</label>
                     <input
                         type="text"
                         pInputText
@@ -314,7 +313,7 @@
             </div>
             <div class="grid">
                 <div class="col-12">
-                    <label for="float-input">Editorial:</label>
+                    <label for="float-input">Editorial</label>
                     <input
                         type="text"
                         pInputText
@@ -325,7 +324,7 @@
             </div>
             <div class="grid">
                 <div class="col-12">
-                    <label for="float-input">ISBN:</label>
+                    <label for="float-input">ISBN</label>
                     <input
                         type="text"
                         pInputText
@@ -336,7 +335,7 @@
             </div>
             <div class="grid">
                 <div class="col-12">
-                    <label for="float-input">Anio Publicacion:</label>
+                    <label for="float-input">A&ntilde;o Publicaci&oacute;n</label>
                     <input
                         type="text"
                         pInputText
@@ -345,21 +344,9 @@
                     />
                 </div>
             </div>
-            <div class="grid">
-                <div class="col-12">
-                    <label for="float-input">Unidades Disponibles:</label>
-                    <input
-                        type="text"
-                        pInputText
-                        class=" w-full"
-                        formControlName="ctgMaterialEscritoUnidadesDisponibles"
-                    />
-                </div>
-            </div>
-
             <div class="grid" formGroupName="ctgTipoArticulo">
                 <div class="col-12">
-                    <label for="float-input">Tipo Articulo:</label>
+                    <label for="float-input">Tipo Art&iacute;culo</label>
                     <p-dropdown
                         [options]="status"
                         optionValue="value"
@@ -372,7 +359,7 @@
 
             <div class="grid">
                 <div class="col-12">
-                    <label for="float-input">Periodicidad:</label>
+                    <label for="float-input">Periodicidad</label>
                     <input
                         type="text"
                         pInputText
@@ -383,7 +370,7 @@
             </div>
             <!--<div class="grid">
                 <div class="col-12">
-                    <label for="float-input">Fecha Publicacion:</label>
+                    <label for="float-input">Fecha Publicacion</label>
                     <input
                         type="text"
                         pInputText
@@ -394,7 +381,7 @@
             </div>-->
             <div class="grid">
                 <div class="col-12">
-                    <label for="float-input">Tema:</label>
+                    <label for="float-input">Tema</label>
                     <input
                         type="text"
                         pInputText
@@ -405,7 +392,7 @@
             </div>
             <div class="grid">
                 <div class="col-12">
-                    <label for="float-input">Idioma:</label>
+                    <label for="float-input">Idioma</label>
                     <input
                         type="text"
                         pInputText
@@ -416,12 +403,23 @@
             </div>
             <div class="grid">
                 <div class="col-12">
-                    <label for="float-input">Informacion Adicional:</label>
+                    <label for="float-input">Informacion Adicional</label>
                     <input
                         type="text"
                         pInputText
                         class=" w-full"
                         formControlName="ctgMaterialEscritoInformacionAdicional"
+                    />
+                </div>
+            </div>
+            <div class="grid">
+                <div class="col-12">
+                    <label for="float-input">Unidades Disponibles</label>
+                    <input
+                        type="text"
+                        pInputText
+                        class=" w-full"
+                        formControlName="ctgMaterialEscritoUnidadesDisponibles"
                     />
                 </div>
             </div>
@@ -442,15 +440,13 @@
                         pButton
                         type="submit"
                         label="Guardar"
-                        (click)="sendDataE()"
+                        (click)="sendDataE(); displayE = false"
                         icon="pi pi-file-edit"
                     ></button>
                 </div>
             </div>
         </ng-template>
     </p-dialog>
-
-
 
     <p-confirmDialog
         header="Confirmation"

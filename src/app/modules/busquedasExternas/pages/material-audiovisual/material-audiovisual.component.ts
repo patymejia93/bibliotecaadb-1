@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { MaterialAudiovisualControllerService } from '../../controllers/material-audiovisual-controller.service';
-import { ContentMaterialAudiovisual, ContentMaterialAudiovisualCreate, MaterialAudiovisual } from '../../interfaces/materialAudiovisual';
-import { MaterialAudiovisualService } from '../../services/material-audiovisual.service';
+import { MaterialAudiovisualControllerService } from 'src/app/modules/mantenimientos/controllers/material-audiovisual-controller.service';
+import { ContentMaterialAudiovisual, MaterialAudiovisual } from 'src/app/modules/mantenimientos/interfaces/materialAudiovisual';
 
 @Component({
   selector: 'app-material-audiovisual',
@@ -12,7 +11,7 @@ import { MaterialAudiovisualService } from '../../services/material-audiovisual.
 })
 export class MaterialAudiovisualComponent implements OnInit {
 
-    display: boolean = false;
+  display: boolean = false;
     displayE: boolean = false;
     status: any[];
     selectedCity: any;
@@ -38,10 +37,16 @@ export class MaterialAudiovisualComponent implements OnInit {
     }
 
     private async _init() {
-        this.materialesAudiovisuales = await this._matEscController.getMatEsc();
+        this.materialesAudiovisuales = await this._matEscController.getMatEscDisp();
         this._initForm();
         this.hasLoad = true;
     }
+
+    private async _Busquedainit(criterio: string) {
+      this.materialesAudiovisuales = await this._matEscController.getMatEscBusqeueda(criterio);
+      this._initForm();
+      this.hasLoad = true;
+  }
 
     private _initForm() {
         this.formMatEsc = new FormGroup({
@@ -92,58 +97,13 @@ export class MaterialAudiovisualComponent implements OnInit {
         } else {
             this._messageService.add({ severity: 'error', summary: 'Acción denegada', detail: 'Al parecer hubo un error con la solicitud inténtelo mas tarde.' });
         }
-        this.ngOnInit();
     }
 
-    public async sendDataE() {
-        console.log('Edit')
-        const response: ContentMaterialAudiovisual | null = await this._matEscController.postEditMatEsc(this.formMatEscE!.value);
-        if (response) {
-            this._messageService.add({ severity: 'success', summary: 'Acción exitosa' });
-            this.display = false;
-        } else {
-            this._messageService.add({ severity: 'error', summary: 'Acción denegada', detail: 'Al parecer hubo un error con la solicitud inténtelo mas tarde.' });
-        }
-        this.ngOnInit();
-    }
-
-    showDialog() {
-        this.display = true;
-    }
-
-    showDialogE(matEsc: any) {
-        this.displayE = true;
-
-        this.formMatEscE = new FormGroup({
-          ctgMaterialAudiovisualId: new FormControl(matEsc.ctgMaterialAudiovisualId),
-          ctgMaterialAudiovisualCorrelativo: new FormControl(matEsc.ctgMaterialAudiovisualCorrelativo),
-          ctgMaterialAudiovisualTitulo: new FormControl(matEsc.ctgMaterialAudiovisualTitulo),
-          ctgMaterialAudiovisualDirector: new FormControl(matEsc.ctgMaterialAudiovisualDirector),
-          ctgMaterialAudiovisualDuracion: new FormControl(matEsc.ctgMaterialAudiovisualDuracion),
-          ctgMaterialAudiovisualGenero: new FormControl(matEsc.ctgMaterialAudiovisualGenero),
-          ctgMaterialAudiovisualUnidadesDisponibles: new FormControl(matEsc.ctgMaterialAudiovisualUnidadesDisponibles),
-          ctgMaterialAudiovisualIsbn: new FormControl(matEsc.ctgMaterialAudiovisualIsbn),
-          ctgMaterialAudiovisualAutor: new FormControl(matEsc.ctgMaterialAudiovisualAutor),
-          ctgTipoArticulo: new FormGroup({
-            ctgTipoArticuloId: new FormControl(matEsc.ctgTipoArticulo.ctgTipoArticuloId),
-            ctgTipoarticuloDescripcion: new FormControl(),
-            ctgTIpoArticuloActivo: new FormControl()
-          }),
-          ctgMaterialAudiovisualIdioma: new FormControl(matEsc.ctgMaterialAudiovisualIdioma)
-        })
-    }
-
-    confirm(id: number) {
-        this.confirmationService.confirm({
-            message: '¿Estas seguro de eliminar este registro?',
-            accept: () => {
-                this._matEscController.deleteMatEsc(id);
-                this._init();
-                this._messageService.add({ severity: 'success', summary: 'Acción exitosa' });
-                this.ngOnInit();
-            }
-        }); 
-        this.ngOnInit();
+    public async search(event: any) {
+      if(event.target.criterioBusqueda.value!)
+        this._Busquedainit(event.target.criterioBusqueda.value);
+      else
+        this._init();
     }
 
 }

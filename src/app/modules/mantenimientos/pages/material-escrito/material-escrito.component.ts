@@ -101,6 +101,7 @@ export class MaterialEscritoComponent implements OnInit {
         } else {
             this._messageService.add({ severity: 'error', summary: 'Acción denegada', detail: 'Al parecer hubo un error con la solicitud inténtelo mas tarde.' });
         }
+        this.ngOnInit();
     }
 
     public async sendDataE() {
@@ -112,6 +113,7 @@ export class MaterialEscritoComponent implements OnInit {
         } else {
             this._messageService.add({ severity: 'error', summary: 'Acción denegada', detail: 'Al parecer hubo un error con la solicitud inténtelo mas tarde.' });
         }
+        this.ngOnInit();
     }
 
     showDialog() {
@@ -151,9 +153,10 @@ export class MaterialEscritoComponent implements OnInit {
                 this._matEscController.deleteMatEsc(id);
                 this._init();
                 this._messageService.add({ severity: 'success', summary: 'Acción exitosa' });
-               
+                this.ngOnInit();
             }
         }); 
+        this.ngOnInit();
     }
 
 }

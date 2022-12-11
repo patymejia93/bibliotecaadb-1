@@ -78,7 +78,7 @@
         <form [formGroup]="formMatEsc!">
             <div class="grid">
                 <div class="col-12">
-                    <label for="float-input">Titulo</label>
+                    <label for="float-input">Título</label>
                     <span class="p-float-label">
                         <input
                             type="text"
@@ -113,7 +113,7 @@
             </div>
             <div class="grid">
                 <div class="col-12">
-                    <label for="float-input">Duracion</label>
+                    <label for="float-input">Duración</label>
                     <input
                         type="text"
                         pInputText
@@ -146,7 +146,7 @@
             </div>
             <div class="grid" formGroupName="ctgTipoArticulo">
                 <div class="col-12">
-                    <label for="float-input">Tipo Articulo</label>
+                    <label for="float-input">Tipo Artículo</label>
                     <p-dropdown
                         [options]="status"
                         optionValue="value"
@@ -195,7 +195,7 @@
                         pButton
                         type="submit"
                         label="Guardar"
-                        (click)="sendData()"
+                        (click)="sendData(); displayE = false"
                         icon="pi pi-file-edit"
                     ></button>
                 </div>
@@ -216,7 +216,7 @@
         <form [formGroup]="formMatEscE!">
             <div class="grid">
                 <div class="col-12">
-                    <label for="float-input">Titulo</label>
+                    <label for="float-input">Título</label>
                     <span class="p-float-label">
                         <input
                             type="text"
@@ -251,7 +251,7 @@
             </div>
             <div class="grid">
                 <div class="col-12">
-                    <label for="float-input">Duracion</label>
+                    <label for="float-input">Duración</label>
                     <input
                         type="text"
                         pInputText
@@ -262,7 +262,7 @@
             </div>
             <div class="grid">
                 <div class="col-12">
-                    <label for="float-input">Genero</label>
+                    <label for="float-input">Género</label>
                     <input
                         type="text"
                         pInputText
@@ -284,7 +284,7 @@
             </div>
             <div class="grid" formGroupName="ctgTipoArticulo">
                 <div class="col-12">
-                    <label for="float-input">Tipo Articulo</label>
+                    <label for="float-input">Tipo Artículo</label>
                     <p-dropdown
                         [options]="status"
                         optionValue="value"
@@ -333,7 +333,7 @@
                         pButton
                         type="submit"
                         label="Guardar"
-                        (click)="sendDataE()"
+                        (click)="sendDataE(); displayE = false"
                         icon="pi pi-file-edit"
                     ></button>
                 </div>
