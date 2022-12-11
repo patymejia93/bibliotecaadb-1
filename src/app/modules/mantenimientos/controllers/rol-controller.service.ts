@@ -26,9 +26,31 @@ export class RolControllerService {
                 next: (response: ContentRol) => {
                     console.log(`response`, response)
                     resolve(response)
+                    this.getRols()
                 },
                 error: () => resolve(null)
             });
+        })
+    }
+
+    postEditRols(params: ContentRol): Promise<ContentRol | null> {
+        console.log(`params`, params)
+        return new Promise<ContentRol | null>((resolve, reject) => {
+            this._rolService.create(params).subscribe({
+                next: (response: ContentRol) => {
+                    console.log(`response`, response)
+                    resolve(response)
+                    this.getRols()
+                },
+                error: () => resolve(null)
+            });
+        })
+    }
+
+    deleteRols(param: number){
+        console.log(`param`, param)
+        return new Promise<ContentRol | null>((resolve, reject) => {
+            this._rolService.delete(param).subscribe();
         })
     }
 }

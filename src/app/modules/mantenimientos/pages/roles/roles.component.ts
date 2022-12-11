@@ -12,12 +12,14 @@ import { ContentRol, Rol } from '../../interfaces/rol';
 export class RolesComponent implements OnInit {
 
     display: boolean = false;
+    displayE: boolean = false;
     status: any[];
     selectedCity: any;
 
     public rols: Rol | null = null;
     public hasLoad: boolean = false;
     public formRol: FormGroup | null = null
+    public formRolE: FormGroup | null = null
 
     constructor(
         private confirmationService: ConfirmationService,
@@ -43,8 +45,15 @@ export class RolesComponent implements OnInit {
     private _initForm() {
         this.formRol = new FormGroup({
             sgdRolNombre: new FormControl(null, { validators: [Validators.required] }),
-            sgdRolActivo: new FormControl('1', { validators: [Validators.required] }),
+            sgdRolActivo: new FormControl('1', { validators: [Validators.required] })
         })
+
+        this.formRolE = new FormGroup({
+            sgdRolId: new FormControl(),
+            sgdRolNombre: new FormControl(),
+            sgdRolActivo: new FormControl()
+        })
+        
     }
 
     public async sendData() {
@@ -57,17 +66,41 @@ export class RolesComponent implements OnInit {
         }
     }
 
+    public async sendDataE() {
+        console.log('Edit')
+        const response: ContentRol | null = await this._rolController.postEditRols(this.formRolE!.value);
+        if (response) {
+            this._messageService.add({ severity: 'success', summary: 'Acción exitosa' });
+        } else {
+            this._messageService.add({ severity: 'error', summary: 'Acción denegada', detail: 'Al parecer hubo un error con la solicitud inténtelo mas tarde.' });
+        }
+    }
 
     showDialog() {
         this.display = true;
     }
 
-    confirm() {
+    showDialogE(rol: any) {
+        this.displayE = true;
+
+        this.formRolE = new FormGroup({
+            sgdRolId: new FormControl(rol.sgdRolId),
+            sgdRolNombre: new FormControl(rol.sgdRolNombre),
+            sgdRolActivo: new FormControl(rol.sgdRolActivo)
+        })
+    }
+
+    confirm(id: number) {
         this.confirmationService.confirm({
             message: '¿Estas seguro de eliminar este registro?',
             accept: () => {
-                //Actual logic to perform a confirmation
+                this._rolController.deleteRols(id);
+                this._init();
+                this._messageService.add({ severity: 'success', summary: 'Acción exitosa' });
+               
             }
         });
+
+        
     }
 }

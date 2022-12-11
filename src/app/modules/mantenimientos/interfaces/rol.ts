@@ -22,6 +22,10 @@ export interface ContentRolCreate {
     sgdRolActivo: string;
 }
 
+export interface ContentRolDelete {
+    sgdRolId: number;
+}
+
 export interface Pageable {
     sort:       Sort;
     offset:     number;
