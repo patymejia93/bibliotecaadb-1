@@ -2,11 +2,11 @@
 <div *ngIf="hasLoad">
     <div class="grid">
         <div class="col-12">
-            <p-card header="Prestamo de Material Escrito">
+            <p-card header="Devolución de Material">
                 <form (ngSubmit)="search($event)">
                     <div class="grid">
                         <div class="col-6">
-                            <label for="float-input">Criterio de Busqueda:</label>
+                            <label for="float-input">Criterio de Búsqueda:</label>
                             <span class="p-float-label">
                                 <input
                                     type="text"
@@ -35,12 +35,13 @@
                             <ng-template pTemplate="header">
                                 <tr>
                                     <th>ID</th>
-                                    <th>FECHA PRESTAMO</th>
+                                    <th>FECHA PRÉSTAMO</th>
                                     <th>FECHA ENTREGA</th>
                                     <th>USUARIO</th>
                                     <th>MATERIAL PRESTADO</th>
                                     <th>MORA</th>
-                                    <th>ESTADO PRESTAMO</th>
+                                    <th>ESTADO PRÉSTAMO</th>
+                                    <th>DEVOLVER</th>
                                 </tr>
                             </ng-template>
                             <ng-template pTemplate="body" let-car>

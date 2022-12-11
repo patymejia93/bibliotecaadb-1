@@ -29,7 +29,6 @@ export class AppMenuComponent implements OnInit {
 
                             { label: 'Roles', icon: 'pi pi-fw pi-star', routerLink: ['/mantenimientos/roles'] },
                             { label: 'Usuarios', icon: 'pi pi-fw pi-user-edit', routerLink: ['/mantenimientos/usuarios'] },
-                            { label: 'Límites de préstamos', icon: 'pi pi-fw pi-tag', routerLink: ['/mantenimientos/´limitePrestamos'] }
 
 
                         ]
@@ -54,12 +53,13 @@ export class AppMenuComponent implements OnInit {
             {
                 label: 'Gestiones',
                 items: [
-                    { label: 'Prestamo Material Escrito', icon: 'pi pi-fw pi-file', routerLink: ['/gestiones/prestamoMaterialEscrito'] },
-                    { label: 'Prestamo Material Audiovisual', icon: 'pi pi-fw pi-desktop', routerLink: ['/gestiones/prestamoMaterialAudiovisual'] },
+                    { label: 'Prestamo de Material', icon: 'pi pi-fw pi-bell', routerLink: ['/gestiones/prestamoMaterialEscrito'] },
                     { label: 'Devoluciones', icon: 'pi pi-fw pi-check', routerLink: ['/gestiones/devoluciones'] },
                 ]
             },
             /* {
+                                 <!--   { label: 'Prestamo Material Audiovisual', icon: 'pi pi-fw pi-desktop', routerLink: ['/gestiones/prestamoMaterialAudiovisual'] },-->
+
                 label: 'UI Components',
                 items: [
                     { label: 'Form Layout', icon: 'pi pi-fw pi-id-card', routerLink: ['/uikit/formlayout'] },

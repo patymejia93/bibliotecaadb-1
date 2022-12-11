@@ -68,7 +68,7 @@
                                                 pButton
                                                 type="button"
                                                 icon="pi pi-trash"
-                                                (click)="confirm(car.sgdMaterialAudiovisualId)"
+                                                (click)="confirm(car.ctgMaterialEscritoId)"
                                             ></button>
                                         </div>
                                     </td>
@@ -274,6 +274,19 @@
         [modal]="true"
     >
         <form [formGroup]="formMatEscE!">
+            <div class="grid">
+                <div class="col-12">
+                    <span class="p-float-label">
+                        <input
+                            type="hidden"
+                            class="w-full"
+                            placeholder="Id"
+                            formControlName="ctgMaterialEscritoId"
+                            readonly = true
+                        />
+                    </span>
+                </div>
+            </div>
             <div class="grid">
                 <div class="col-12">
                     <label for="float-input">Título</label>

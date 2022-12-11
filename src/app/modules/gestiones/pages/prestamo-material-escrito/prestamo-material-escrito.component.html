@@ -2,11 +2,11 @@
 <div *ngIf="hasLoad">
     <div class="grid">
         <div class="col-12">
-            <p-card header="Prestamo de Material Escrito">
+            <p-card header="Préstamo de Material">
                 <form (ngSubmit)="search($event)">
                     <div class="grid">
                         <div class="col-6">
-                            <label for="float-input">Criterio de Busqueda:</label>
+                            <label for="float-input">Criterio de Búsqueda:</label>
                             <span class="p-float-label">
                                 <input
                                     type="text"
@@ -35,19 +35,21 @@
                             <ng-template pTemplate="header">
                                 <tr>
                                     <th>CORRELATIVO</th>
-                                    <th>TITULO</th>
+                                    <th>TÍTULO</th>
                                     <th>AUTOR</th>
-                                    <th>NUMERO PAG.</th>
+                                    <th>PÁGINAS</th>
                                     <th>EDITORIAL</th>
                                     <th>ISBN</th>
-                                    <th>ANIO PUB.</th>
-                                    <th>UNIDADES DISP.</th>
-                                    <th>TIPO ARTICULOS</th>
+                                    <th>AÑO PUB.</th>
+                                    <th>TIPO</th>
                                     <th>PERIODICIDAD</th>
                                     <!--<th>FECHA PUBLICACION</th>-->
                                     <th>TEMA</th>
                                     <th>IDIOMA</th>
                                     <th>INFO ADICIONAL</th>
+                                    <th>UNIDADES DISP.</th>
+                                    <th>PRESTAR</th>
+
                                 </tr>
                             </ng-template>
                             <ng-template pTemplate="body" let-car>
@@ -59,12 +61,13 @@
                                     <td>{{ car.ctgMaterialEscritoEditorial }}</td>
                                     <td>{{ car.ctgMaterialEscritoIsbn }}</td>
                                     <td>{{ car.ctgMaterialEscritoAnioPublicacion }}</td>
-                                    <td>{{ car.ctgMaterialEscritoUnidadesDisponibles }}</td>
                                     <td>{{ car.ctgTipoArticulo.ctgTipoarticuloDescripcion }}</td>
                                     <td>{{ car.ctgMaterialEscritoPeriodicidad }}</td>
                                     <td>{{ car.ctgMaterialEscritoTema }}</td>
                                     <td>{{ car.ctgMaterialEscritoIdioma }}</td>
                                     <td>{{ car.ctgMaterialEscritoInformacionAdicional }}</td>
+                                    <td>{{ car.ctgMaterialEscritoUnidadesDisponibles }}</td>
+
                                     <td>
                                         <div class="p-buttonset">
                                             <button
