@@ -21,19 +21,20 @@
                             <ng-template pTemplate="header">
                                 <tr>
                                     <th>CORRELATIVO</th>
-                                    <th>TITULO</th>
+                                    <th>T&Iacute;TULO</th>
                                     <th>AUTOR</th>
-                                    <th>NUMERO PAG.</th>
+                                    <th>P&Aacute;GINAS</th>
                                     <th>EDITORIAL</th>
-                                    <th>ISBN</th>
-                                    <th>ANIO PUB.</th>
-                                    <th>UNIDADES DISP.</th>
-                                    <th>TIPO ARTICULOS</th>
-                                    <th>PERIODICIDAD</th>
+                                    <!--<th>ISBN</th>-->
+                                    <th>A&Ntilde;O PUB.</th>
+                                    <th>TIPO ART&Iacute;CULO</th>
+                                     <!--<th>PERIODICIDAD</th>-->
                                     <!--<th>FECHA PUBLICACION</th>-->
-                                    <th>TEMA</th>
+                                   <!-- <th>TEMA</th>-->
                                     <th>IDIOMA</th>
-                                    <th>INFO ADICIONAL</th>
+                                    <!--<th>INFO ADICIONAL</th>-->
+                                    <th>UNIDADES DISP.</th>
+                                    <th>ACCIONES</th>
                                 </tr>
                             </ng-template>
                             <ng-template pTemplate="body" let-car>
@@ -43,15 +44,16 @@
                                     <td>{{ car.ctgMaterialEscritoAutor }}</td>
                                     <td>{{ car.ctgMaterialEscritoNumeroPaginas }}</td>
                                     <td>{{ car.ctgMaterialEscritoEditorial }}</td>
-                                    <td>{{ car.ctgMaterialEscritoIsbn }}</td>
+                                   <!--  <td>{{ car.ctgMaterialEscritoIsbn }}</td>-->
                                     <td>{{ car.ctgMaterialEscritoAnioPublicacion }}</td>
-                                    <td>{{ car.ctgMaterialEscritoUnidadesDisponibles }}</td>
                                     <td>{{ car.ctgTipoArticulo.ctgTipoarticuloDescripcion }}</td>
-                                    <td>{{ car.ctgMaterialEscritoPeriodicidad }}</td>
+                                    <!-- <td>{{ car.ctgMaterialEscritoPeriodicidad }}</td>-->
                                     <!--<td>{{ car.ctgMaterialEscritoFechaPublicacion | date: 'dd/MM/yyyy'}}</td>-->
-                                    <td>{{ car.ctgMaterialEscritoTema }}</td>
+                                     <!--<td>{{ car.ctgMaterialEscritoTema }}</td>-->
                                     <td>{{ car.ctgMaterialEscritoIdioma }}</td>
-                                    <td>{{ car.ctgMaterialEscritoInformacionAdicional }}</td>
+                                    <!-- <td>{{ car.ctgMaterialEscritoInformacionAdicional }}</td>-->
+                                    <td>{{ car.ctgMaterialEscritoUnidadesDisponibles }}</td>
+
                                     <td>
                                         <div class="p-buttonset">
                                             <button
@@ -66,7 +68,7 @@
                                                 pButton
                                                 type="button"
                                                 icon="pi pi-trash"
-                                                (click)="confirm(car.sgdRolId)"
+                                                (click)="confirm(car.sgdMaterialAudiovisualId)"
                                             ></button>
                                         </div>
                                     </td>
@@ -96,7 +98,7 @@
                         <input
                             type="text"
                             pInputText
-                            class="p-inputtext-lg w-full"
+                            class=" w-full"
                             formControlName="ctgMaterialEscritoTitulo"
                         />
                     </span>
@@ -108,7 +110,7 @@
                     <input
                         type="text"
                         pInputText
-                        class="p-inputtext-lg w-full"
+                        class=" w-full"
                         formControlName="ctgMaterialEscritoAutor"
                     />
                 </div>
@@ -119,7 +121,7 @@
                     <input
                         type="text"
                         pInputText
-                        class="p-inputtext-lg w-full"
+                        class=" w-full"
                         formControlName="ctgMaterialEscritoNumeroPaginas"
                     />
                 </div>
@@ -130,7 +132,7 @@
                     <input
                         type="text"
                         pInputText
-                        class="p-inputtext-lg w-full"
+                        class=" w-full"
                         formControlName="ctgMaterialEscritoEditorial"
                     />
                 </div>
@@ -141,7 +143,7 @@
                     <input
                         type="text"
                         pInputText
-                        class="p-inputtext-lg w-full"
+                        class=" w-full"
                         formControlName="ctgMaterialEscritoIsbn"
                     />
                 </div>
@@ -152,7 +154,7 @@
                     <input
                         type="text"
                         pInputText
-                        class="p-inputtext-lg w-full"
+                        class=" w-full"
                         formControlName="ctgMaterialEscritoAnioPublicacion"
                     />
                 </div>
@@ -163,7 +165,7 @@
                     <input
                         type="text"
                         pInputText
-                        class="p-inputtext-lg w-full"
+                        class=" w-full"
                         formControlName="ctgMaterialEscritoUnidadesDisponibles"
                     />
                 </div>
@@ -188,7 +190,7 @@
                     <input
                         type="text"
                         pInputText
-                        class="p-inputtext-lg w-full"
+                        class=" w-full"
                         formControlName="ctgMaterialEscritoPeriodicidad"
                     />
                 </div>
@@ -199,7 +201,7 @@
                     <input
                         type="text"
                         pInputText
-                        class="p-inputtext-lg w-full"
+                        class=" w-full"
                         formControlName="ctgMaterialEscritoFechaPublicacion"
                     />
                 </div>
@@ -210,7 +212,7 @@
                     <input
                         type="text"
                         pInputText
-                        class="p-inputtext-lg w-full"
+                        class=" w-full"
                         formControlName="ctgMaterialEscritoTema"
                     />
                 </div>
@@ -221,7 +223,7 @@
                     <input
                         type="text"
                         pInputText
-                        class="p-inputtext-lg w-full"
+                        class=" w-full"
                         formControlName="ctgMaterialEscritoIdioma"
                     />
                 </div>
@@ -232,7 +234,7 @@
                     <input
                         type="text"
                         pInputText
-                        class="p-inputtext-lg w-full"
+                        class=" w-full"
                         formControlName="ctgMaterialEscritoInformacionAdicional"
                     />
                 </div>
@@ -280,7 +282,7 @@
                         <input
                             type="text"
                             pInputText
-                            class="p-inputtext-lg w-full"
+                            class=" w-full"
                             formControlName="ctgMaterialEscritoTitulo"
                         />
                     </span>
@@ -292,7 +294,7 @@
                     <input
                         type="text"
                         pInputText
-                        class="p-inputtext-lg w-full"
+                        class=" w-full"
                         formControlName="ctgMaterialEscritoAutor"
                     />
                 </div>
@@ -305,7 +307,7 @@
                     <input
                         type="text"
                         pInputText
-                        class="p-inputtext-lg w-full"
+                        class=" w-full"
                         formControlName="ctgMaterialEscritoNumeroPaginas"
                     />
                 </div>
@@ -316,7 +318,7 @@
                     <input
                         type="text"
                         pInputText
-                        class="p-inputtext-lg w-full"
+                        class=" w-full"
                         formControlName="ctgMaterialEscritoEditorial"
                     />
                 </div>
@@ -327,7 +329,7 @@
                     <input
                         type="text"
                         pInputText
-                        class="p-inputtext-lg w-full"
+                        class=" w-full"
                         formControlName="ctgMaterialEscritoIsbn"
                     />
                 </div>
@@ -338,7 +340,7 @@
                     <input
                         type="text"
                         pInputText
-                        class="p-inputtext-lg w-full"
+                        class=" w-full"
                         formControlName="ctgMaterialEscritoAnioPublicacion"
                     />
                 </div>
@@ -349,7 +351,7 @@
                     <input
                         type="text"
                         pInputText
-                        class="p-inputtext-lg w-full"
+                        class=" w-full"
                         formControlName="ctgMaterialEscritoUnidadesDisponibles"
                     />
                 </div>
@@ -374,7 +376,7 @@
                     <input
                         type="text"
                         pInputText
-                        class="p-inputtext-lg w-full"
+                        class=" w-full"
                         formControlName="ctgMaterialEscritoPeriodicidad"
                     />
                 </div>
@@ -385,7 +387,7 @@
                     <input
                         type="text"
                         pInputText
-                        class="p-inputtext-lg w-full"
+                        class=" w-full"
                         formControlName="ctgMaterialEscritoFechaPublicacion"
                     />
                 </div>
@@ -396,7 +398,7 @@
                     <input
                         type="text"
                         pInputText
-                        class="p-inputtext-lg w-full"
+                        class=" w-full"
                         formControlName="ctgMaterialEscritoTema"
                     />
                 </div>
@@ -407,7 +409,7 @@
                     <input
                         type="text"
                         pInputText
-                        class="p-inputtext-lg w-full"
+                        class=" w-full"
                         formControlName="ctgMaterialEscritoIdioma"
                     />
                 </div>
@@ -418,7 +420,7 @@
                     <input
                         type="text"
                         pInputText
-                        class="p-inputtext-lg w-full"
+                        class=" w-full"
                         formControlName="ctgMaterialEscritoInformacionAdicional"
                     />
                 </div>

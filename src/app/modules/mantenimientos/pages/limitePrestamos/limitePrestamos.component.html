@@ -2,7 +2,7 @@
 <div *ngIf="hasLoad">
     <div class="grid">
         <div class="col-12">
-            <p-card header="Mantenimiento de Roles">
+            <p-card header="Mantenimiento de Limite de Prestamos">
                 <div class="grid">
                     <div class="col">
                         <button
@@ -17,7 +17,7 @@
                 </div>
                 <div class="grid mt-5">
                     <div class="col-12">
-                        <p-table [value]="rols!.content">
+                        <p-table [value]="limitePrestamos!.content">
                             <ng-template pTemplate="header">
                                 <tr>
                                     <th>ID</th>
@@ -47,7 +47,7 @@
                                                 pButton
                                                 type="button"
                                                 icon="pi pi-trash"
-                                                (click)="confirm(car.sgdRolId)"
+                                                (click)="confirm(car.sgdLimitePrestamosId)"
                                             ></button>
                                         </div>
                                     </td>

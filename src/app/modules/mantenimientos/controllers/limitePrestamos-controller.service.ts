@@ -11,36 +11,36 @@ export class LimitePrestamosControllerService {
         private _limitePrestamosService: LimitePrestamosService
     ) { }
 
-    getRols(): Promise<LimitePrestamos | null> {
+    getLimitePrestamos(): Promise<LimitePrestamos | null> {
         return new Promise<LimitePrestamos | null>((resolve, reject) => {
-            this._limitePrestamosService.rols().subscribe({
+            this._limitePrestamosService.limitePrestamos().subscribe({
                 next: (response) => resolve(response),
                 error: () => resolve(null)
             });
         })
     }
-    postRols(params: ContentLimitePrestamosCreate): Promise<ContentLimitePrestamos | null> {
+    postLimitePrestamos(params: ContentLimitePrestamosCreate): Promise<ContentLimitePrestamos | null> {
         console.log(`params`, params)
         return new Promise<ContentLimitePrestamos | null>((resolve, reject) => {
             this._limitePrestamosService.create(params).subscribe({
                 next: (response: ContentLimitePrestamos) => {
                     console.log(`response`, response)
                     resolve(response)
-                    this.getRols()
+                    this.getLimitePrestamos()
                 },
                 error: () => resolve(null)
             });
         })
     }
 
-    postEditRols(params: ContentLimitePrestamos): Promise<ContentLimitePrestamos | null> {
+    postEditLimitePrestamos(params: ContentLimitePrestamos): Promise<ContentLimitePrestamos | null> {
         console.log(`params`, params)
         return new Promise<ContentLimitePrestamos | null>((resolve, reject) => {
             this._limitePrestamosService.create(params).subscribe({
                 next: (response: ContentLimitePrestamos) => {
                     console.log(`response`, response)
                     resolve(response)
-                    this.getRols()
+                    this.getLimitePrestamos()
                 },
                 error: () => resolve(null)
             });

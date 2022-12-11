@@ -14,11 +14,11 @@ export interface LimitePrestamos {
 
 export interface ContentLimitePrestamos {
     sgdLimitePrestamosId:     number;
-    sgdLimitePrestamosNombre: string;
+    sgdLimitePrestamosUsuario: string;
     sgdLimitePrestamosActivo: string;
 }
 export interface ContentLimitePrestamosCreate {
-    sgdLimitePrestamosNombre: string;
+    sgdLimitePrestamosUsuario: string;
     sgdLimitePrestamosActivo: string;
 }
 

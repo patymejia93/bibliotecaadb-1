@@ -15,7 +15,7 @@ export class LimitePrestamosService {
         private _http: HttpClient
     ) { }
 
-    rols(): Observable<LimitePrestamos> {
+    limitePrestamos(): Observable<LimitePrestamos> {
         const headers = new HttpHeaders().set('Authorization', environment.token)
         return this._http.get<LimitePrestamos>(`${this._API}?page=0&size=10`, { headers });
     }

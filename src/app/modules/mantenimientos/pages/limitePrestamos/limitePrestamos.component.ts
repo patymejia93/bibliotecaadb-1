@@ -37,7 +37,7 @@ export class LimitePrestamosComponent implements OnInit {
     }
 
     private async _init() {
-        this.limitePrestamos = await this._limitePrestamosController.getRols();
+        this.limitePrestamos = await this._limitePrestamosController.getLimitePrestamos();
         this._initForm();
         this.hasLoad = true;
     }
@@ -58,7 +58,7 @@ export class LimitePrestamosComponent implements OnInit {
 
     public async sendData() {
         console.log('first')
-        const response: ContentLimitePrestamos | null = await this._limitePrestamosController.postRols(this.formLimitePrestamos!.value);
+        const response: ContentLimitePrestamos | null = await this._limitePrestamosController.postLimitePrestamos(this.formLimitePrestamos!.value);
         if (response) {
             this._messageService.add({ severity: 'success', summary: 'Acción exitosa' });
         } else {
@@ -69,7 +69,7 @@ export class LimitePrestamosComponent implements OnInit {
 
     public async sendDataE() {
         console.log('Edit')
-        const response: ContentLimitePrestamos | null = await this._limitePrestamosController.postEditRols(this.formLimitePrestamosE!.value);
+        const response: ContentLimitePrestamos | null = await this._limitePrestamosController.postEditLimitePrestamos(this.formLimitePrestamosE!.value);
         if (response) {
             this._messageService.add({ severity: 'success', summary: 'Acción exitosa' });
         } else {
@@ -82,13 +82,13 @@ export class LimitePrestamosComponent implements OnInit {
         this.display = true;
     }
 
-    showDialogE(rol: any) {
+    showDialogE(limitePrestamos: any) {
         this.displayE = true;
 
         this.formLimitePrestamosE = new FormGroup({
-            sgdRolId: new FormControl(rol.sgdRolId),
-            sgdRolNombre: new FormControl(rol.sgdRolNombre),
-            sgdRolActivo: new FormControl(rol.sgdRolActivo)
+            sgdLimitePrestamosId: new FormControl(limitePrestamos.sg),
+            sgdLimitePrestamosUsuario: new FormControl(limitePrestamos.sgdRolNombre),
+            sgdLimitePrestamosActivo: new FormControl(limitePrestamos.sgdRolActivo)
         })
     }
 

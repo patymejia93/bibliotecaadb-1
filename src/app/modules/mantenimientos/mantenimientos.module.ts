@@ -6,6 +6,7 @@ import { MaterialEscritoComponent } from './pages/material-escrito/material-escr
 import { MaterialAudiovisualComponent } from './pages/material-audiovisual/material-audiovisual.component';
 import { RolesComponent } from './pages/roles/roles.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
+import { LimitePrestamosComponent } from './pages/limitePrestamos/limitePrestamos.component';
 import { CardModule } from 'primeng/card';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
@@ -25,7 +26,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         MaterialEscritoComponent,
         MaterialAudiovisualComponent,
         RolesComponent,
-        UsuariosComponent
+        UsuariosComponent,
+        LimitePrestamosComponent
     ],
     imports: [
         CommonModule,

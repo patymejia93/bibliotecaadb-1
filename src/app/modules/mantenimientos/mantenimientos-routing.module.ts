@@ -4,6 +4,7 @@ import { MaterialAudiovisualComponent } from './pages/material-audiovisual/mater
 import { MaterialEscritoComponent } from './pages/material-escrito/material-escrito.component';
 import { RolesComponent } from './pages/roles/roles.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
+import { LimitePrestamosComponent } from './pages/limitePrestamos/limitePrestamos.component';
 
 const routes: Routes = [
     {
@@ -21,6 +22,10 @@ const routes: Routes = [
     {
         path: 'usuarios',
         component: UsuariosComponent
+    },
+    {
+        path: 'limitePrestamos',
+        component: LimitePrestamosComponent
     },
     {
         path: '**',
