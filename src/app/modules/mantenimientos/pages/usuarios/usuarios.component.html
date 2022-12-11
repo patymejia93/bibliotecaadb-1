@@ -1,219 +1,376 @@
-<div class="grid">
-    <div class="col-12">
-        <p-card header="Mantenimiento de Usuarios">
+<p-progressSpinner *ngIf="!hasLoad"></p-progressSpinner>
+<div *ngIf="hasLoad">
+    <div class="grid">
+        <div class="col-12">
+            <p-card header="Mantenimiento de Usuarios">
+                <div class="grid">
+                    <div class="col">
+                        <button
+                            class="p-button-info"
+                            pButton
+                            type="button"
+                            label="Nuevo Registro"
+                            icon="pi pi-plus"
+                            (click)="showDialog()"
+                        ></button>
+                    </div>
+                </div>
+                <div class="grid mt-5">
+                    <div class="col-12">
+                        <p-table [value]="usuarios!.content">
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>NOMBRE</th>
+                                    <th>APELLIDO</th>
+                                    <th>CORREO</th>
+                                    <th>TELÉFONO</th>
+                                    <th>USUARIO</th>
+                                    <th>ROL</th>
+                                    <th>ESTADO</th>
+                                    <th>ACCIONES</th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-car>
+                                <tr>
+                                    <td>{{ car.sgdUsuarioId }}</td>
+                                    <td>{{ car.sgdUsuarioPrimerNombre }}</td>
+                                    <td>{{ car.sgdUsuarioPrimerApellido }}</td>
+                                    <td>{{ car.sgdCorreo }}</td>
+                                    <td>{{ car.sgdUsuarioTelefono }}</td>
+                                    <td>{{ car.sgdUsuarioUsuario }}</td>
+                                    <td>{{ car.sgdRoles.sgdRolNombre }}</td>
+                                    <td>{{ car.sgdUsuarioActivo }}</td>
+                                    <td>
+                                        <div class="p-buttonset">
+                                            <button
+                                                class="p-button-secondary"
+                                                pButton
+                                                type="button"
+                                                icon="pi pi-file-edit"
+                                                (click)="showDialogE(car)"
+                                            ></button>
+                                            <button
+                                                class="p-button-danger"
+                                                pButton
+                                                type="button"
+                                                icon="pi pi-trash"
+                                                (click)="confirm(car.sgdUsuarioId)"
+                                            ></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </div>
+                </div>
+            </p-card>
+        </div>
+    </div>
+
+    <p-dialog
+        header="Agregar Registro"
+        [(visible)]="display"
+        [keepInViewport]="true"
+        [breakpoints]="{ '960px': '75vw', '640px': '100vw' }"
+        [style]="{ width: '50vw', minHeight: '400px' }"
+        [draggable]="false"
+        [modal]="true"
+    >
+        <form [formGroup]="formUsuario!">
+            <label for="float-input">Nombre</label>
             <div class="grid">
-                <div class="col">
+                <div class="col-12">
+                    <span class="p-float-label">
+                        <input
+                            type="text"
+                            pInputText
+                            class="w-full"
+                            formControlName="sgdUsuarioPrimerNombre"
+                        />
+                       
+                    </span>
+                </div>
+            </div>
+            <label for="float-input">Apellido</label>
+            <div class="grid">
+                <div class="col-12">
+                    <span class="p-float-label">
+                        <input
+                            type="text"
+                            pInputText
+                            class="w-full"
+                            formControlName="sgdUsuarioPrimerApellido"
+                        />
+                       
+                    </span>
+                </div>
+            </div>
+            <label for="float-input">Correo</label>
+            <div class="grid">
+                <div class="col-12">
+                    <span class="p-float-label">
+                        <input
+                            type="email"
+                            pInputText
+                            class="w-full"
+                            formControlName="sgdCorreo"
+                        />
+                       
+                    </span>
+                </div>
+            </div>
+            <label for="float-input">Tel&eacute;fono</label>
+            <div class="grid">
+                <div class="col-12">
+                    <span class="p-float-label">
+                        <input
+                            type="tel"
+                            pInputText
+                            class="w-full"
+                            formControlName="sgdUsuarioTelefono"
+                        />
+                       
+                    </span>
+                </div>
+            </div>
+            <label for="float-input">Usuario</label>
+            <div class="grid">
+                <div class="col-12">
+                    <span class="p-float-label">
+                        <input
+                            type="text"
+                            pInputText
+                            class="w-full"
+                            formControlName="sgdUsuarioUsuario"
+                        />
+                    </span>
+                </div>
+            </div>
+            <label for="float-input">Contrase&ntilde;a</label>
+            <div class="grid">
+                <div class="col-12">
+                    <span class="p-float-label">
+                        <input
+                            type="password"
+                            pInputText
+                            class="w-full"
+                            formControlName="sgdUsuarioPassword"
+                        />
+                    </span>
+                </div>
+            </div>
+            <label for="float-input">Rol</label>
+            <div class="grid" formGroupName="sgdRoles">
+                <div class="col-12">
+                    <span class="p-float-label">
+                        <p-dropdown
+                            [options]="roles"
+                            optionValue="value"
+                            optionLabel="name"
+                            styleClass="w-full"
+                            formControlName="sgdRolId"
+                        ></p-dropdown>
+                    </span>
+                </div>
+            </div>
+            <label for="float-input">Estado</label>
+            <div class="grid">
+                <div class="col-12">
+                    <p-dropdown
+                        [options]="status"
+                        optionValue="value"
+                        optionLabel="name"
+                        styleClass="w-full"
+                        formControlName="sgdUsuarioActivo"
+                    ></p-dropdown>
+                </div>
+            </div>
+        </form>
+        <ng-template pTemplate="footer">
+            <div class="flex justify-content-end align-items-center">
+                <div class="p-buttonset">
                     <button
-                        class="p-button-info"
+                        class="p-button-danger"
                         pButton
                         type="button"
-                        label="Nuevo usuario"
-                        icon="pi pi-plus"
-                        (click)="showDialog()"
+                        label="Cancelar"
+                        icon="pi pi-trash"
+                        (click)="display = false"
+                    ></button>
+                    <button
+                        class="p-button-success"
+                        pButton
+                        type="submit"
+                        label="Guardar"
+                        (click)="sendData(); display = false"
+                        icon="pi pi-file-edit"
                     ></button>
                 </div>
             </div>
-            <div class="grid mt-5">
+        </ng-template>
+    </p-dialog>
+
+
+    <p-dialog
+        header="Editar Registro"
+        [(visible)]="displayE"
+        [keepInViewport]="true"
+        [breakpoints]="{ '960px': '75vw', '640px': '100vw' }"
+        [style]="{ width: '50vw', minHeight: '400px' }"
+        [draggable]="false"
+        [modal]="true"
+    >
+        <form [formGroup]="formUsuarioE!">
+            <div class="grid">
                 <div class="col-12">
-                    <p-table [value]="[{}]">
-                        <ng-template pTemplate="header">
-                            <tr>
-                                <th>ID</th>
-                                <th>PRIMER NOMBRE</th>
-                                <th>SEGUNDO NOMBRE</th>
-                                <th>PRIMER APELLIDO</th>
-                                <th>SEGUNDO APELLIDO</th>
-                                <th>CORREO</th>
-                                <th>ACTIVO</th>
-                                <th>CONTRA</th>
-                                <th>TELÉFONO</th>
-                                <th>USUARIO</th>
-                                <th>ROL</th>
-                                <th>ACCIONES</th>
-                            </tr>
-                        </ng-template>
-                        <ng-template pTemplate="body" let-car>
-                            <tr>
-                                <td>{{ car.vin }}</td>
-                                <td>{{ car.year }}</td>
-                                <td>{{ car.brand }}</td>
-                                <td>{{ car.brand }}</td>
-                                <td>{{ car.brand }}</td>
-                                <td>{{ car.brand }}</td>
-                                <td>{{ car.brand }}</td>
-                                <td>{{ car.brand }}</td>
-                                <td>{{ car.brand }}</td>
-                                <td>{{ car.brand }}</td>
-                                <td>{{ car.brand }}</td>
-                                <td style="max-width: 80px">
-                                    <div class="p-buttonset">
-                                        <button
-                                            class="p-button-secondary"
-                                            pButton
-                                            type="button"
-                                            icon="pi pi-file-edit"
-                                            (click)="showDialog()"
-                                        ></button>
-                                        <button
-                                            class="p-button-danger"
-                                            pButton
-                                            type="button"
-                                            icon="pi pi-trash"
-                                            (click)="confirm()"
-                                        ></button>
-                                    </div>
-                                </td>
-                            </tr>
-                        </ng-template>
-                    </p-table>
+                    <span class="p-float-label">
+                        <input
+                            type="hidden"
+                            class="p-inputtext-lg w-full"
+                            placeholder="Id"
+                            formControlName="sgdUsuarioId"
+                            readonly = true
+                        />
+                    </span>
                 </div>
             </div>
-        </p-card>
-    </div>
-</div>
+            <label for="float-input">Nombre</label>
+            <div class="grid">
+                <div class="col-12">
+                    <span class="p-float-label">
+                        <input
+                            type="text"
+                            pInputText
+                            class="w-full"
+                            formControlName="sgdUsuarioPrimerNombre"
+                        />
+                       
+                    </span>
+                </div>
+            </div>
+            <label for="float-input">Apellido</label>
+            <div class="grid">
+                <div class="col-12">
+                    <span class="p-float-label">
+                        <input
+                            type="text"
+                            pInputText
+                            class="w-full"
+                            formControlName="sgdUsuarioPrimerApellido"
+                        />
+                       
+                    </span>
+                </div>
+            </div>
+            <label for="float-input">Correo</label>
+            <div class="grid">
+                <div class="col-12">
+                    <span class="p-float-label">
+                        <input
+                            type="email"
+                            pInputText
+                            class="w-full"
+                            formControlName="sgdCorreo"
+                        />
+                       
+                    </span>
+                </div>
+            </div>
+            <label for="float-input">Tel&eacute;fono</label>
+            <div class="grid">
+                <div class="col-12">
+                    <span class="p-float-label">
+                        <input
+                            type="tel"
+                            pInputText
+                            class="w-full"
+                            formControlName="sgdUsuarioTelefono"
+                        />
+                       
+                    </span>
+                </div>
+            </div>
+            <label for="float-input">Usuario</label>
+            <div class="grid">
+                <div class="col-12">
+                    <span class="p-float-label">
+                        <input
+                            type="text"
+                            pInputText
+                            class="w-full"
+                            formControlName="sgdUsuarioUsuario"
+                        />
+                    </span>
+                </div>
+            </div>
+            <label for="float-input">Contrase&ntilde;a</label>
+            <div class="grid">
+                <div class="col-12">
+                    <span class="p-float-label">
+                        <input
+                            type="password"
+                            pInputText
+                            class="w-full"
+                            formControlName="sgdUsuarioPassword"
+                        />
+                    </span>
+                </div>
+            </div>
+            <label for="float-input">Rol</label>
+            <div class="grid" formGroupName="sgdRoles">
+                <div class="col-12">
+                    <span class="p-float-label">
+                        <p-dropdown
+                            [options]="roles"
+                            optionValue="value"
+                            optionLabel="name"
+                            styleClass="w-full"
+                            formControlName="sgdRolId"
+                        ></p-dropdown>
+                    </span>
+                </div>
+            </div>
+            <label for="float-input">Estado</label>
+            <div class="grid">
+                <div class="col-12">
+                    <p-dropdown
+                        [options]="status"
+                        optionValue="value"
+                        optionLabel="name"
+                        styleClass="w-full"
+                        formControlName="sgdUsuarioActivo"
+                    ></p-dropdown>
+                </div>
+            </div>
+        </form>
+        <ng-template pTemplate="footer">
+            <div class="flex justify-content-end align-items-center">
+                <div class="p-buttonset">
+                    <button
+                        class="p-button-danger"
+                        pButton
+                        type="button"
+                        label="Cancelar"
+                        icon="pi pi-trash"
+                        (click)="displayE = false"
+                    ></button>
+                    <button
+                        class="p-button-success"
+                        pButton
+                        type="submit"
+                        label="Guardar"
+                        (click)="sendDataE(); displayE = false"
+                        icon="pi pi-file-edit"
+                    ></button>
+                </div>
+            </div>
+        </ng-template>
+    </p-dialog>
 
-<p-dialog
-    header="Nuevo Usuario"
-    [(visible)]="display"
-    [keepInViewport]="true"
-    [breakpoints]="{ '960px': '75vw', '640px': '100vw' }"
-    [style]="{ width: '50vw', minHeight: '400px' }"
-    [draggable]="false"
-    [modal]="true"
->
-    <form>
-        <div class="grid">
-            <div class="col">
-                <span class="p-float-label">
-                    <input
-                        type="text"
-                        pInputText
-                        class="p-inputtext-lg w-full"
-                        placeholder="Primer nombre"
-                    />
-                    <label for="float-input">Primer nombre</label>
-                </span>
-            </div>
-            <div class="col">
-                <span class="p-float-label">
-                    <input
-                        type="text"
-                        pInputText
-                        class="p-inputtext-lg w-full"
-                        placeholder="Segundo Nombre"
-                    />
-                    <label for="float-input">Segundo Nombre</label>
-                </span>
-            </div>
-            <div class="col">
-                <span class="p-float-label">
-                    <input
-                        type="text"
-                        pInputText
-                        class="p-inputtext-lg w-full"
-                        placeholder="Primer apellido"
-                    />
-                    <label for="float-input">Primer apellido</label>
-                </span>
-            </div>
-            <div class="col">
-                <span class="p-float-label">
-                    <input
-                        type="text"
-                        pInputText
-                        class="p-inputtext-lg w-full"
-                        placeholder="Segundo apellido"
-                    />
-                    <label for="float-input">Segundo apellido</label>
-                </span>
-            </div>
-        </div>
-        <div class="grid">
-            <div class="col">
-                <p-dropdown
-                    [options]="cities"
-                    optionLabel="name"
-                    styleClass="w-full"
-                ></p-dropdown>
-            </div>
-            <div class="col">
-                <span class="p-float-label">
-                    <input
-                        type="email"
-                        pInputText
-                        class="p-inputtext-lg w-full"
-                        placeholder="Correo"
-                    />
-                    <label for="float-input">Correo</label>
-                </span>
-            </div>
-            <div class="col">
-                <span class="p-float-label">
-                    <input
-                        type="email"
-                        pInputText
-                        class="p-inputtext-lg w-full"
-                        placeholder="Contra"
-                    />
-                    <label for="float-input">Contra</label>
-                </span>
-            </div>
-        </div>
-        <div class="grid">
-            <div class="col">
-                <p-dropdown
-                    [options]="cities"
-                    optionLabel="name"
-                    styleClass="w-full"
-                ></p-dropdown>
-            </div>
-            <div class="col">
-                <span class="p-float-label">
-                    <input
-                        type="email"
-                        pInputText
-                        class="p-inputtext-lg w-full"
-                        placeholder="Teléfono"
-                    />
-                    <label for="float-input">Teléfono</label>
-                </span>
-            </div>
-            <div class="col">
-                <span class="p-float-label">
-                    <input
-                        type="email"
-                        pInputText
-                        class="p-inputtext-lg w-full"
-                        placeholder="Usuario"
-                    />
-                    <label for="float-input">Usuario</label>
-                </span>
-            </div>
-        </div>
-    </form>
-    <ng-template pTemplate="footer">
-        <div class="flex justify-content-end align-items-center">
-            <div class="p-buttonset">
-                <button
-                    class="p-button-danger"
-                    pButton
-                    type="button"
-                    label="Cancelar"
-                    icon="pi pi-trash"
-                ></button>
-                <button
-                    class="p-button-success"
-                    pButton
-                    type="button"
-                    label="Crear"
-                    icon="pi pi-file-edit"
-                ></button>
-            </div>
-        </div>
-    </ng-template>
-</p-dialog>
-<p-confirmDialog
-    header="Confirmation"
-    icon="pi pi-exclamation-triangle"
-></p-confirmDialog>
-<!-- <p-toast></p-toast> -->
+    <p-confirmDialog
+        header="Eliminar Registro"
+        icon="pi pi-exclamation-triangle"
+    ></p-confirmDialog>
+    <p-toast></p-toast>
+</div>
