@@ -21,35 +21,42 @@ export class AppMenuComponent implements OnInit {
                 ]
             },
             {
-                label: 'Mantenimientos',
+                label: 'Administración',
                 items: [
                     {
-                        label: 'Seguridad', icon: 'pi pi-fw pi-bookmark',
+                        label: 'Seguridad', icon: 'pi pi-fw pi-cog',
                         items: [
 
-                            { label: 'Roles', icon: 'pi pi-fw pi-bookmark', routerLink: ['/mantenimientos/roles'] },
-                            { label: 'Usuarios', icon: 'pi pi-fw pi-bookmark', routerLink: ['/mantenimientos/usuarios'] },
+                            { label: 'Roles', icon: 'pi pi-fw pi-star', routerLink: ['/mantenimientos/roles'] },
+                            { label: 'Usuarios', icon: 'pi pi-fw pi-user-edit', routerLink: ['/mantenimientos/usuarios'] },
+                            { label: 'Límites de préstamos', icon: 'pi pi-fw pi-tag', routerLink: ['/mantenimientos/´limitePrestamos'] }
 
 
                         ]
                     },
-                    { label: 'Material Escrito', icon: 'pi pi-fw pi-bookmark', routerLink: ['/mantenimientos/materialEscrito'] },
-                    { label: 'Material Audiovisual', icon: 'pi pi-fw pi-bookmark', routerLink: ['/mantenimientos/materialAudiovisual'] },
+                    {
+                        label: 'Recursos', icon: 'pi pi-fw pi-list',
+                        items: [
+                            { label: 'Material Escrito', icon: 'pi pi-fw pi-file', routerLink: ['/mantenimientos/materialEscrito'] },
+                            { label: 'Material Audiovisual', icon: 'pi pi-fw pi-desktop', routerLink: ['/mantenimientos/materialAudiovisual'] },
+                        ]
+                    }
+                    
                 ]
             },
             {
-                label: 'Búsquedas',
+                label: 'Consultas',
                 items: [
-                    { label: 'Material Escrito', icon: 'pi pi-fw pi-bookmark', routerLink: ['/busquedas/materialEscrito'] },
-                    { label: 'Material Audiovisual', icon: 'pi pi-fw pi-bookmark', routerLink: ['/busquedas/materialAudiovisual'] },
+                    { label: 'Material Escrito', icon: 'pi pi-fw pi-file', routerLink: ['/busquedas/materialEscrito'] },
+                    { label: 'Material Audiovisual', icon: 'pi pi-fw pi-desktop', routerLink: ['/busquedas/materialAudiovisual'] },
                 ]
             },
             {
                 label: 'Gestiones',
                 items: [
-                    { label: 'Prestamo Material Escrito', icon: 'pi pi-fw pi-bookmark', routerLink: ['/gestiones/prestamoMaterialEscrito'] },
-                    { label: 'Prestamo Material Audiovisual', icon: 'pi pi-fw pi-bookmark', routerLink: ['/gestiones/prestamoMaterialAudiovisual'] },
-                    { label: 'Devoluciones', icon: 'pi pi-fw pi-bookmark', routerLink: ['/gestiones/devoluciones'] },
+                    { label: 'Prestamo Material Escrito', icon: 'pi pi-fw pi-file', routerLink: ['/gestiones/prestamoMaterialEscrito'] },
+                    { label: 'Prestamo Material Audiovisual', icon: 'pi pi-fw pi-desktop', routerLink: ['/gestiones/prestamoMaterialAudiovisual'] },
+                    { label: 'Devoluciones', icon: 'pi pi-fw pi-check', routerLink: ['/gestiones/devoluciones'] },
                 ]
             },
             /* {

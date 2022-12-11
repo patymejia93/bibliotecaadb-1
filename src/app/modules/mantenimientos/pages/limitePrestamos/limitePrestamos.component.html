@@ -21,16 +21,18 @@
                             <ng-template pTemplate="header">
                                 <tr>
                                     <th>ID</th>
-                                    <th>ROL</th>
+                                    <th>USUARIO</th>
+                                    <th>LIMITE DE PRESTAMOS</th>
                                     <th>ESTADO</th>
                                     <th>ACCIONES</th>
                                 </tr>
                             </ng-template>
                             <ng-template pTemplate="body" let-car>
                                 <tr>
-                                    <td>{{ car.sgdRolId }}</td>
-                                    <td>{{ car.sgdRolNombre }}</td>
-                                    <td>{{ car.sgdRolActivo }}</td>
+                                    <td>{{ car.sgdLimitePrestamosId }}</td>
+                                    <td>{{ car.sgdLimitePrestamosUsuario }}</td>
+                                    <td>{{ car.sgdLimitePrestamosLimite }}</td>
+                                    <td>{{ car.sgdLimitePrestamosActivo }}</td>
                                     <td>
                                         <div class="p-buttonset">
                                             <button
@@ -67,15 +69,26 @@
         [draggable]="false"
         [modal]="true"
     >
-        <form [formGroup]="formRol!">
-            <label for="float-input">Rol</label>
+        <form [formGroup]="formLimitePrestamos!">
+            <label for="float-input">Usuario</label>
             <div class="grid">
                 <div class="col-12">
                     <input
                         type="text"
                         pInputText
                         class="w-full"
-                        formControlName="sgdRolNombre"
+                        formControlName="sgdLimitePrestamosUsuario"
+                    />
+                </div>
+            </div>
+            <label for="float-input">Limite de prestamos</label>
+            <div class="grid">
+                <div class="col-12">
+                    <input
+                        type="text"
+                        pInputText
+                        class="w-full"
+                        formControlName="sgdLimitePrestamosLimite"
                     />
                 </div>
             </div>
@@ -87,7 +100,7 @@
                         optionValue="value"
                         optionLabel="name"
                         styleClass="w-full"
-                        formControlName="sgdRolActivo"
+                        formControlName="sgdLimitePrestamosActivo"
                     ></p-dropdown>
                 </div>
             </div>
@@ -126,44 +139,42 @@
         [draggable]="false"
         [modal]="true"
     >
-        <form [formGroup]="formRolE!">
-            <div class="grid">
-                <div class="col-12">
-                    <span class="p-float-label">
-                        <input
-                            type="hidden"
-                            class="w-full"
-                            placeholder="Id"
-                            formControlName="sgdRolId"
-                            readonly = true
-                        />
-                    </span>
-                </div>
+    <form [formGroup]="formLimitePrestamos!">
+        <label for="float-input">Usuario</label>
+        <div class="grid">
+            <div class="col-12">
+                <input
+                    type="text"
+                    pInputText
+                    class="w-full"
+                    formControlName="sgdLimitePrestamosUsuario"
+                />
             </div>
-            <label for="float-input">Rol</label>
-            <div class="grid">
-                <div class="col-12">
-                    <input
-                        type="text"
-                        pInputText
-                        class="w-full"
-                        formControlName="sgdRolNombre"
-                    />
-                </div>
+        </div>
+        <label for="float-input">Limite de prestamos</label>
+        <div class="grid">
+            <div class="col-12">
+                <input
+                    type="text"
+                    pInputText
+                    class="w-full"
+                    formControlName="sgdLimitePrestamosLimite"
+                />
             </div>
-            <label for="float-input">Estado</label>
-            <div class="grid">
-                <div class="col-12">
-                    <p-dropdown
-                        [options]="status"
-                        optionValue="value"
-                        optionLabel="name"
-                        styleClass="w-full"
-                        formControlName="sgdRolActivo"
-                    ></p-dropdown>
-                </div>
+        </div>
+        <label for="float-input">Estado</label>
+        <div class="grid">
+            <div class="col-12">
+                <p-dropdown
+                    [options]="status"
+                    optionValue="value"
+                    optionLabel="name"
+                    styleClass="w-full"
+                    formControlName="sgdLimitePrestamosActivo"
+                ></p-dropdown>
             </div>
-        </form>
+        </div>
+    </form>
         <ng-template pTemplate="footer">
             <div class="flex justify-content-end align-items-center">
                 <div class="p-buttonset">

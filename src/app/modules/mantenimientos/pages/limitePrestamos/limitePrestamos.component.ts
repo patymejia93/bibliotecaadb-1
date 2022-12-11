@@ -1,29 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { RolControllerService } from '../../controllers/rol-controller.service';
-import { ContentRol, Rol } from '../../interfaces/rol';
+import { LimitePrestamosControllerService } from '../../controllers/limitePrestamos-controller.service';
+import { ContentLimitePrestamos, LimitePrestamos } from '../../interfaces/limitePrestamos';
 
 @Component({
-    selector: 'app-roles',
-    templateUrl: './roles.component.html',
-    styleUrls: ['./roles.component.scss']
+    selector: 'app-limitePrestamos',
+    templateUrl: './limitePrestamos.component.html',
+    styleUrls: ['./limitePrestamos.component.scss']
 })
-export class RolesComponent implements OnInit {
+export class LimitePrestamosComponent implements OnInit {
 
     display: boolean = false;
     displayE: boolean = false;
     status: any[];
     selectedCity: any;
 
-    public rols: Rol | null = null;
+    public limitePrestamos: LimitePrestamos | null = null;
     public hasLoad: boolean = false;
-    public formRol: FormGroup | null = null
-    public formRolE: FormGroup | null = null
+    public formLimitePrestamos: FormGroup | null = null
+    public formLimitePrestamosE: FormGroup | null = null
 
     constructor(
         private confirmationService: ConfirmationService,
-        private _rolController: RolControllerService,
+        private _limitePrestamosController: LimitePrestamosControllerService,
         private _messageService: MessageService
     ) {
         this.status = [
@@ -37,28 +37,28 @@ export class RolesComponent implements OnInit {
     }
 
     private async _init() {
-        this.rols = await this._rolController.getRols();
+        this.limitePrestamos = await this._limitePrestamosController.getRols();
         this._initForm();
         this.hasLoad = true;
     }
 
     private _initForm() {
-        this.formRol = new FormGroup({
-            sgdRolNombre: new FormControl(null, { validators: [Validators.required] }),
-            sgdRolActivo: new FormControl('1', { validators: [Validators.required] })
+        this.formLimitePrestamos = new FormGroup({
+            sgdLimitePrestamosNombre: new FormControl(null, { validators: [Validators.required] }),
+            sgdLimitePrestamosActivo: new FormControl('1', { validators: [Validators.required] })
         })
 
-        this.formRolE = new FormGroup({
-            sgdRolId: new FormControl(),
-            sgdRolNombre: new FormControl(),
-            sgdRolActivo: new FormControl()
+        this.formLimitePrestamosE = new FormGroup({
+            sgdLimitePrestamosId: new FormControl(),
+            sgdLimitePrestamosNombre: new FormControl(),
+            sgdLimitePrestamosActivo: new FormControl()
         })
         
     }
 
     public async sendData() {
         console.log('first')
-        const response: ContentRol | null = await this._rolController.postRols(this.formRol!.value);
+        const response: ContentLimitePrestamos | null = await this._limitePrestamosController.postRols(this.formLimitePrestamos!.value);
         if (response) {
             this._messageService.add({ severity: 'success', summary: 'Acción exitosa' });
         } else {
@@ -69,7 +69,7 @@ export class RolesComponent implements OnInit {
 
     public async sendDataE() {
         console.log('Edit')
-        const response: ContentRol | null = await this._rolController.postEditRols(this.formRolE!.value);
+        const response: ContentLimitePrestamos | null = await this._limitePrestamosController.postEditRols(this.formLimitePrestamosE!.value);
         if (response) {
             this._messageService.add({ severity: 'success', summary: 'Acción exitosa' });
         } else {
@@ -85,7 +85,7 @@ export class RolesComponent implements OnInit {
     showDialogE(rol: any) {
         this.displayE = true;
 
-        this.formRolE = new FormGroup({
+        this.formLimitePrestamosE = new FormGroup({
             sgdRolId: new FormControl(rol.sgdRolId),
             sgdRolNombre: new FormControl(rol.sgdRolNombre),
             sgdRolActivo: new FormControl(rol.sgdRolActivo)
@@ -96,7 +96,7 @@ export class RolesComponent implements OnInit {
         this.confirmationService.confirm({
             message: '¿Estas seguro de eliminar este registro?',
             accept: () => {
-                this._rolController.deleteRols(id);
+                this._limitePrestamosController.deleteLimitePrestamos(id);
                 this._messageService.add({ severity: 'success', summary: 'Acción exitosa' });
                 this.ngOnInit();
 
