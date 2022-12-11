@@ -78,21 +78,51 @@ export class PrestamoMaterialEscritoComponent implements OnInit {
         accept: () => {
               this.formPrestamo = new FormGroup({
                     gstPrestamoId: new FormControl(),
-                    gstPrestamoFechaInicial: new FormControl(Date),
-                    gstPrestamoFechaFinal: new FormControl(new Date().getDate()+3),
+                    gstPrestamoFechaInicial: new FormControl(new Date()),
+                    gstPrestamoFechaFinal: new FormControl(new Date()),
                     sgdUsuario: new FormGroup({
-                      sgdUsuarioId: new FormControl(1)
+                      sgdUsuarioId: new FormControl(1),
+                      sgdUsuarioPrimerNombre: new FormControl(),
+                      sgdUsuarioPrimerApellido: new FormControl(),
+                      sgdCorreo: new FormControl(),
+                      sgdUsuarioTelefono: new FormControl(),
+                      sgdUsuarioUsuario: new FormControl(),
+                      sgdUsuarioPassword: new FormControl(),
+                      sgdRoles: new FormGroup({
+
+                        sgdRolId:     new FormControl(),
+                        sgdRolNombre: new FormControl(),
+                        sgdRolActivo: new FormControl()
+                      }),
+                      sgdUsuarioActivo: new FormControl()
                     }),
                     ctgMaterialEscrito: new FormGroup({
-                      ctgMaterialEscritoId: new FormControl(articulo.ctgMaterialEscritoId)
+                      ctgMaterialEscritoId: new FormControl(articulo.ctgMaterialEscritoId),
+                      ctgMaterialEscritoCorrelativo: new FormControl(),
+                      ctgMaterialEscritoTitulo: new FormControl(),
+                      ctgMaterialEscritoAutor: new FormControl(),
+                      ctgMaterialEscritoNumeroPaginas: new FormControl(),
+                      ctgMaterialEscritoEditorial: new FormControl(),
+                      ctgMaterialEscritoIsbn: new FormControl(),
+                      ctgMaterialEscritoAnioPublicacion: new FormControl(),
+                      ctgMaterialEscritoUnidadesDisponibles: new FormControl(),
+                      ctgTipoArticulo : new FormGroup({
+                        ctgTipoArticuloId: new FormControl(),
+                        ctgTipoarticuloDescripcion: new FormControl(),
+                        ctgTIpoArticuloActivo: new FormControl()
+                      }),
+                      ctgMaterialEscritoPeriodicidad: new FormControl(),
+                      ctgMaterialEscritoFechaPublicacion: new FormControl(),
+                      ctgMaterialEscritoTema: new FormControl(),
+                      ctgMaterialEscritoIdioma: new FormControl(),
+                      ctgMaterialEscritoInformacionAdicional: new FormControl(),
                     }),
-                    gstPrestamoMora: new FormControl(),
+                    gstPrestamoMora: new FormControl(0.0),
                     ctgEstadoPrestamo: new FormGroup({
-                      ctgEstadoPrestamoId: new FormControl()
-                    }),
-                    ctgMaterialAudiovisual: new FormGroup({
-                      ctgMaterialAudiovisualId: new FormControl()
-                    }) 
+                      ctgEstadoPrestamoId: new FormControl(1),
+                      ctgEstadoPrestamoEstado: new FormControl(),
+                      ctgEstadoPrestamoActivo: new FormControl()
+                    })
               }) 
 
           this._prestamoController.postPrestamo(this.formPrestamo!.value);

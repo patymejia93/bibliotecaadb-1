@@ -56,12 +56,12 @@ postPrestamo(params: ContentPrestamoCreate): Promise<ContentPrestamo | null> {
             error: () => resolve(null)
         });
     })
-}
-
-deleteMatEsc(param: number){
-    console.log(`param`, param)
-    return new Promise<ContentMaterialEscrito | null>((resolve, reject) => {
-        this._matEscService.delete(param).subscribe();
-    })
 }*/
+
+deletePrestamo(param: number){
+    console.log(`param`, param)
+    return new Promise<ContentPrestamo| null>((resolve, reject) => {
+        this._prestamoService.delete(param).subscribe();
+    })
+}
 }

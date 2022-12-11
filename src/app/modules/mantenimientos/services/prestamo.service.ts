@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { ContentPrestamo, ContentPrestamoCreate, Prestamo } from '../interfaces/Prestamo';
+import { ContentPrestamo, ContentPrestamoCreate, ContentPrestamoDelete, Prestamo } from '../interfaces/Prestamo';
 
 @Injectable({
     providedIn: 'root'
@@ -25,6 +25,14 @@ export class PrestamoService {
         .set('Authorization', environment.token)
         .set('Content-Type', 'application/json')
         return this._http.post<ContentPrestamo>(`${this._API}`, params, { headers });
+    }
+
+    delete(param: number){
+        // console.log(`params`, params)
+        const headers = new HttpHeaders()
+        .set('Authorization', environment.token)
+        .set('Content-Type', 'application/json')
+        return this._http.delete<ContentPrestamoDelete>(`${this._API}/`+ param, { headers });
     }
 
 }

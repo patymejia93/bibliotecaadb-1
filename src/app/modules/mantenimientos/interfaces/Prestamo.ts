@@ -25,10 +25,14 @@ export interface ContentPrestamo {
 }
 
 export interface ContentPrestamoCreate {
+    gstPrestamoId:     number;
+    gstPrestamoFechaInicial: string;
+    gstPrestamoFechaFinal: string;
     sgdUsuario: ContentUsuario;
     ctgMaterialEscrito: ContentMaterialEscrito;
     gstPrestamoMora: number;
     ctgEstadoPrestamo: ContentEstadoPrestamo;
+    ctgMaterialAudiovisual: ContentMaterialAudiovisual;
     
 }
 
@@ -108,4 +112,9 @@ export interface Sort {
     empty:    boolean;
     sorted:   boolean;
     unsorted: boolean;
+}
+
+
+export interface ContentPrestamoDelete {
+    gstPrestamoId: number;
 }

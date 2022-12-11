@@ -56,7 +56,7 @@ const PROXY_CONFIG = [
         changeOrigin: true,
     },
     {
-        context: ["/prestamo"],
+        context: ["/prestamos"],
         target: "http://192.168.5.164:8090",
         secure: false,
         logLevel: "debug",
