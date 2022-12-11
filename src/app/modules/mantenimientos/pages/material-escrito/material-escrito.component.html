@@ -1,1 +1,458 @@
-<p>material-escrito works!</p>
+<p-progressSpinner *ngIf="!hasLoad"></p-progressSpinner>
+<div *ngIf="hasLoad">
+    <div class="grid">
+        <div class="col-12">
+            <p-card header="Mantenimiento de Material Escrito">
+                <div class="grid">
+                    <div class="col">
+                        <button
+                            class="p-button-info"
+                            pButton
+                            type="button"
+                            label="Nuevo Material"
+                            icon="pi pi-plus"
+                            (click)="showDialog()"
+                        ></button>
+                    </div>
+                </div>
+                <div class="grid mt-5">
+                    <div class="col-12">
+                        <p-table [value]="materialesEscritos!.content">
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th>CORRELATIVO</th>
+                                    <th>TITULO</th>
+                                    <th>AUTOR</th>
+                                    <th>NUMERO PAG.</th>
+                                    <th>EDITORIAL</th>
+                                    <th>ISBN</th>
+                                    <th>ANIO PUB.</th>
+                                    <th>UNIDADES DISP.</th>
+                                    <th>TIPO ARTICULOS</th>
+                                    <th>PERIODICIDAD</th>
+                                    <!--<th>FECHA PUBLICACION</th>-->
+                                    <th>TEMA</th>
+                                    <th>IDIOMA</th>
+                                    <th>INFO ADICIONAL</th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-car>
+                                <tr>
+                                    <td>{{ car.ctgMaterialEscritoCorrelativo }}</td>
+                                    <td>{{ car.ctgMaterialEscritoTitulo }}</td>
+                                    <td>{{ car.ctgMaterialEscritoAutor }}</td>
+                                    <td>{{ car.ctgMaterialEscritoNumeroPaginas }}</td>
+                                    <td>{{ car.ctgMaterialEscritoEditorial }}</td>
+                                    <td>{{ car.ctgMaterialEscritoIsbn }}</td>
+                                    <td>{{ car.ctgMaterialEscritoAnioPublicacion }}</td>
+                                    <td>{{ car.ctgMaterialEscritoUnidadesDisponibles }}</td>
+                                    <td>{{ car.ctgTipoArticulo.ctgTipoarticuloDescripcion }}</td>
+                                    <td>{{ car.ctgMaterialEscritoPeriodicidad }}</td>
+                                    <!--<td>{{ car.ctgMaterialEscritoFechaPublicacion | date: 'dd/MM/yyyy'}}</td>-->
+                                    <td>{{ car.ctgMaterialEscritoTema }}</td>
+                                    <td>{{ car.ctgMaterialEscritoIdioma }}</td>
+                                    <td>{{ car.ctgMaterialEscritoInformacionAdicional }}</td>
+                                    <td>
+                                        <div class="p-buttonset">
+                                            <button
+                                                class="p-button-secondary"
+                                                pButton
+                                                type="button"
+                                                icon="pi pi-file-edit"
+                                                (click)="showDialogE(car)"
+                                            ></button>
+                                            <button
+                                                class="p-button-danger"
+                                                pButton
+                                                type="button"
+                                                icon="pi pi-trash"
+                                                (click)="confirm(car.sgdRolId)"
+                                            ></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </div>
+                </div>
+            </p-card>
+        </div>
+    </div>
+
+    <p-dialog
+        header="Nuevo Material Escrito"
+        [(visible)]="display"
+        [keepInViewport]="true"
+        [breakpoints]="{ '960px': '75vw', '640px': '100vw' }"
+        [style]="{ width: '50vw', minHeight: '400px' }"
+        [draggable]="false"
+        [modal]="true"
+    >
+        <form [formGroup]="formMatEsc!">
+            <div class="grid">
+                <div class="col-12">
+                    <label for="float-input">Titulo</label>
+                    <span class="p-float-label">
+                        <input
+                            type="text"
+                            pInputText
+                            class="p-inputtext-lg w-full"
+                            formControlName="ctgMaterialEscritoTitulo"
+                        />
+                    </span>
+                </div>
+            </div>
+            <div class="grid">
+                <div class="col-12">
+                    <label for="float-input">Autor</label>
+                    <input
+                        type="text"
+                        pInputText
+                        class="p-inputtext-lg w-full"
+                        formControlName="ctgMaterialEscritoAutor"
+                    />
+                </div>
+            </div>
+            <div class="grid">
+                <div class="col-12">
+                    <label for="float-input">Numero Paginas</label>
+                    <input
+                        type="text"
+                        pInputText
+                        class="p-inputtext-lg w-full"
+                        formControlName="ctgMaterialEscritoNumeroPaginas"
+                    />
+                </div>
+            </div>
+            <div class="grid">
+                <div class="col-12">
+                    <label for="float-input">Editorial:</label>
+                    <input
+                        type="text"
+                        pInputText
+                        class="p-inputtext-lg w-full"
+                        formControlName="ctgMaterialEscritoEditorial"
+                    />
+                </div>
+            </div>
+            <div class="grid">
+                <div class="col-12">
+                    <label for="float-input">ISBN:</label>
+                    <input
+                        type="text"
+                        pInputText
+                        class="p-inputtext-lg w-full"
+                        formControlName="ctgMaterialEscritoIsbn"
+                    />
+                </div>
+            </div>
+            <div class="grid">
+                <div class="col-12">
+                    <label for="float-input">Anio Publicacion:</label>
+                    <input
+                        type="text"
+                        pInputText
+                        class="p-inputtext-lg w-full"
+                        formControlName="ctgMaterialEscritoAnioPublicacion"
+                    />
+                </div>
+            </div>
+            <div class="grid">
+                <div class="col-12">
+                    <label for="float-input">Unidades Disponibles:</label>
+                    <input
+                        type="text"
+                        pInputText
+                        class="p-inputtext-lg w-full"
+                        formControlName="ctgMaterialEscritoUnidadesDisponibles"
+                    />
+                </div>
+            </div>
+
+            <div class="grid" formGroupName="ctgTipoArticulo">
+                <div class="col-12">
+                    <label for="float-input">Tipo Articulo:</label>
+                    <p-dropdown
+                        [options]="status"
+                        optionValue="value"
+                        optionLabel="name"
+                        styleClass="w-full"
+                        formControlName="ctgTipoArticuloId"
+                    ></p-dropdown>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="col-12">
+                    <label for="float-input">Periodicidad:</label>
+                    <input
+                        type="text"
+                        pInputText
+                        class="p-inputtext-lg w-full"
+                        formControlName="ctgMaterialEscritoPeriodicidad"
+                    />
+                </div>
+            </div>
+           <!--<div class="grid">
+                <div class="col-12">
+                    <label for="float-input">Fecha Publicacion:</label>
+                    <input
+                        type="text"
+                        pInputText
+                        class="p-inputtext-lg w-full"
+                        formControlName="ctgMaterialEscritoFechaPublicacion"
+                    />
+                </div>
+            </div>-->
+            <div class="grid">
+                <div class="col-12">
+                    <label for="float-input">Tema:</label>
+                    <input
+                        type="text"
+                        pInputText
+                        class="p-inputtext-lg w-full"
+                        formControlName="ctgMaterialEscritoTema"
+                    />
+                </div>
+            </div>
+            <div class="grid">
+                <div class="col-12">
+                    <label for="float-input">Idioma:</label>
+                    <input
+                        type="text"
+                        pInputText
+                        class="p-inputtext-lg w-full"
+                        formControlName="ctgMaterialEscritoIdioma"
+                    />
+                </div>
+            </div>
+            <div class="grid">
+                <div class="col-12">
+                    <label for="float-input">Informacion Adicional:</label>
+                    <input
+                        type="text"
+                        pInputText
+                        class="p-inputtext-lg w-full"
+                        formControlName="ctgMaterialEscritoInformacionAdicional"
+                    />
+                </div>
+            </div>
+        </form>
+        <ng-template pTemplate="footer">
+            <div class="flex justify-content-end align-items-center">
+                <div class="p-buttonset">
+                    <button
+                        class="p-button-danger"
+                        pButton
+                        type="button"
+                        label="Cancelar"
+                        icon="pi pi-trash"
+                        (click)="display = false"
+                    ></button>
+                    <button
+                        class="p-button-success"
+                        pButton
+                        type="submit"
+                        label="Guardar"
+                        (click)="sendData()"
+                        icon="pi pi-file-edit"
+                    ></button>
+                </div>
+            </div>
+        </ng-template>
+    </p-dialog>
+
+
+    <p-dialog
+        header="Editar Material Escrito"
+        [(visible)]="displayE"
+        [keepInViewport]="true"
+        [breakpoints]="{ '960px': '75vw', '640px': '100vw' }"
+        [style]="{ width: '50vw', minHeight: '400px' }"
+        [draggable]="false"
+        [modal]="true"
+    >
+        <form [formGroup]="formMatEscE!">
+            <div class="grid">
+                <div class="col-12">
+                    <label for="float-input">Titulo</label>
+                    <span class="p-float-label">
+                        <input
+                            type="text"
+                            pInputText
+                            class="p-inputtext-lg w-full"
+                            formControlName="ctgMaterialEscritoTitulo"
+                        />
+                    </span>
+                </div>
+            </div>
+            <div class="grid">
+                <div class="col-12">
+                    <label for="float-input">Autor</label>
+                    <input
+                        type="text"
+                        pInputText
+                        class="p-inputtext-lg w-full"
+                        formControlName="ctgMaterialEscritoAutor"
+                    />
+                </div>
+            </div>
+
+
+            <div class="grid">
+                <div class="col-12">
+                    <label for="float-input">Numero Paginas</label>
+                    <input
+                        type="text"
+                        pInputText
+                        class="p-inputtext-lg w-full"
+                        formControlName="ctgMaterialEscritoNumeroPaginas"
+                    />
+                </div>
+            </div>
+            <div class="grid">
+                <div class="col-12">
+                    <label for="float-input">Editorial:</label>
+                    <input
+                        type="text"
+                        pInputText
+                        class="p-inputtext-lg w-full"
+                        formControlName="ctgMaterialEscritoEditorial"
+                    />
+                </div>
+            </div>
+            <div class="grid">
+                <div class="col-12">
+                    <label for="float-input">ISBN:</label>
+                    <input
+                        type="text"
+                        pInputText
+                        class="p-inputtext-lg w-full"
+                        formControlName="ctgMaterialEscritoIsbn"
+                    />
+                </div>
+            </div>
+            <div class="grid">
+                <div class="col-12">
+                    <label for="float-input">Anio Publicacion:</label>
+                    <input
+                        type="text"
+                        pInputText
+                        class="p-inputtext-lg w-full"
+                        formControlName="ctgMaterialEscritoAnioPublicacion"
+                    />
+                </div>
+            </div>
+            <div class="grid">
+                <div class="col-12">
+                    <label for="float-input">Unidades Disponibles:</label>
+                    <input
+                        type="text"
+                        pInputText
+                        class="p-inputtext-lg w-full"
+                        formControlName="ctgMaterialEscritoUnidadesDisponibles"
+                    />
+                </div>
+            </div>
+
+            <div class="grid" formGroupName="ctgTipoArticulo">
+                <div class="col-12">
+                    <label for="float-input">Tipo Articulo:</label>
+                    <p-dropdown
+                        [options]="status"
+                        optionValue="value"
+                        optionLabel="name"
+                        styleClass="w-full"
+                        formControlName="ctgTipoArticuloId"
+                    ></p-dropdown>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="col-12">
+                    <label for="float-input">Periodicidad:</label>
+                    <input
+                        type="text"
+                        pInputText
+                        class="p-inputtext-lg w-full"
+                        formControlName="ctgMaterialEscritoPeriodicidad"
+                    />
+                </div>
+            </div>
+            <!--<div class="grid">
+                <div class="col-12">
+                    <label for="float-input">Fecha Publicacion:</label>
+                    <input
+                        type="text"
+                        pInputText
+                        class="p-inputtext-lg w-full"
+                        formControlName="ctgMaterialEscritoFechaPublicacion"
+                    />
+                </div>
+            </div>-->
+            <div class="grid">
+                <div class="col-12">
+                    <label for="float-input">Tema:</label>
+                    <input
+                        type="text"
+                        pInputText
+                        class="p-inputtext-lg w-full"
+                        formControlName="ctgMaterialEscritoTema"
+                    />
+                </div>
+            </div>
+            <div class="grid">
+                <div class="col-12">
+                    <label for="float-input">Idioma:</label>
+                    <input
+                        type="text"
+                        pInputText
+                        class="p-inputtext-lg w-full"
+                        formControlName="ctgMaterialEscritoIdioma"
+                    />
+                </div>
+            </div>
+            <div class="grid">
+                <div class="col-12">
+                    <label for="float-input">Informacion Adicional:</label>
+                    <input
+                        type="text"
+                        pInputText
+                        class="p-inputtext-lg w-full"
+                        formControlName="ctgMaterialEscritoInformacionAdicional"
+                    />
+                </div>
+            </div>
+        </form>
+        <ng-template pTemplate="footer">
+            <div class="flex justify-content-end align-items-center">
+                <div class="p-buttonset">
+                    <button
+                        class="p-button-danger"
+                        pButton
+                        type="button"
+                        label="Cancelar"
+                        icon="pi pi-trash"
+                        (click)="displayE = false"
+                    ></button>
+                    <button
+                        class="p-button-success"
+                        pButton
+                        type="submit"
+                        label="Guardar"
+                        (click)="sendDataE()"
+                        icon="pi pi-file-edit"
+                    ></button>
+                </div>
+            </div>
+        </ng-template>
+    </p-dialog>
+
+
+
+    <p-confirmDialog
+        header="Confirmation"
+        icon="pi pi-exclamation-triangle"
+    ></p-confirmDialog>
+    <p-toast></p-toast>
+</div>
