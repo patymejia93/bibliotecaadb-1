@@ -18,7 +18,17 @@ export class MaterialAudiovisualService {
   materialesAudiovisuales(): Observable<MaterialAudiovisual> {
     const headers = new HttpHeaders().set('Authorization', environment.token)
     return this._http.get<MaterialAudiovisual>(`${this._API}?page=0&size=10`, { headers });
-}
+  }
+
+  materialesAudiovisualesDisp(): Observable<MaterialAudiovisual> {
+    const headers = new HttpHeaders().set('Authorization', environment.token)
+    return this._http.get<MaterialAudiovisual>(`${this._API}/disponible/?page=0&size=10`, { headers });
+  }
+
+  materialesAudiovisualesBusqueda(criterio: string): Observable<MaterialAudiovisual> {
+    const headers = new HttpHeaders().set('Authorization', environment.token)
+    return this._http.get<MaterialAudiovisual>(`${this._API}/ctg_mau_titulo/`+criterio, { headers });
+  }
 
 create(params: ContentMaterialAudiovisualCreate): Observable<ContentMaterialAudiovisual> {
     // console.log(`params`, params)

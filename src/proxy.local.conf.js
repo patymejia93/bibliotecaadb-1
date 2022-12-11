@@ -55,6 +55,13 @@ const PROXY_CONFIG = [
         logLevel: "debug",
         changeOrigin: true,
     },
+    {
+        context: ["/prestamo"],
+        target: "http://192.168.5.164:8090",
+        secure: false,
+        logLevel: "debug",
+        changeOrigin: true,
+    }
 ];
 
 module.exports = PROXY_CONFIG;

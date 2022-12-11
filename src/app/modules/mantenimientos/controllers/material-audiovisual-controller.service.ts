@@ -19,6 +19,24 @@ getMatEsc(): Promise<MaterialAudiovisual | null> {
         });
     })
 }
+
+getMatEscDisp(): Promise<MaterialAudiovisual | null> {
+    return new Promise<MaterialAudiovisual | null>((resolve, reject) => {
+        this._matEscService.materialesAudiovisualesDisp().subscribe({
+            next: (response) => resolve(response),
+            error: () => resolve(null)
+        });
+    })
+}
+
+getMatEscBusqeueda(criterio: string): Promise<MaterialAudiovisual | null> {
+    return new Promise<MaterialAudiovisual | null>((resolve, reject) => {
+        this._matEscService.materialesAudiovisualesBusqueda(criterio).subscribe({
+            next: (response) => resolve(response),
+            error: () => resolve(null)
+        });
+    })
+}
 postMatEsc(params: ContentMaterialAudiovisualCreate): Promise<ContentMaterialAudiovisual | null> {
     console.log(`params`, params)
     return new Promise<ContentMaterialAudiovisual | null>((resolve, reject) => {

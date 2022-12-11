@@ -18,7 +18,17 @@ export class MaterialEscritoService {
   materialesEscritos(): Observable<MaterialEscrito> {
     const headers = new HttpHeaders().set('Authorization', environment.token)
     return this._http.get<MaterialEscrito>(`${this._API}?page=0&size=10`, { headers });
-}
+  }
+
+  materialesEscritosDisp(): Observable<MaterialEscrito> {
+    const headers = new HttpHeaders().set('Authorization', environment.token)
+    return this._http.get<MaterialEscrito>(`${this._API}/disponible?page=0&size=10`, { headers });
+  }
+
+  materialesEscritosBusqueda(criterio: string): Observable<MaterialEscrito> {
+    const headers = new HttpHeaders().set('Authorization', environment.token)
+    return this._http.get<MaterialEscrito>(`${this._API}/ctg_me_autor/`+criterio, { headers });
+  }
 
 create(params: ContentMaterialEscritoCreate): Observable<ContentMaterialEscrito> {
     // console.log(`params`, params)

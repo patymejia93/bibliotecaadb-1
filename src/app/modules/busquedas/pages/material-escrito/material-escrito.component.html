@@ -1,1 +1,83 @@
-<p>material-escrito works!</p>
+<p-progressSpinner *ngIf="!hasLoad"></p-progressSpinner>
+<div *ngIf="hasLoad">
+    <div class="grid">
+        <div class="col-12">
+            <p-card header="Busqueda de Material Escrito Disponible">
+                <form (ngSubmit)="search($event)">
+                    <div class="grid">
+                        <div class="col-6">
+                            <label for="float-input">Criterio de Busqueda:</label>
+                            <span class="p-float-label">
+                                <input
+                                    type="text"
+                                    pInputText
+                                    class="p-inputtext-lg w-full"
+                                    id="criterioBusqueda"
+                                />
+                            </span>
+                        </div>
+                        <!--<div class="col-2">
+                            <label for="float-input">&nbsp;</label>
+                            <div class="p-buttonset">
+                                <button
+                                    class="p-button-secondary"
+                                    pButton
+                                    type="button"
+                                    label="Buscar"
+                                    icon="pi pi-search"
+                                ></button>
+                            </div>
+                        </div>-->
+                    </div>
+                </form>
+                <div class="grid mt-5">
+                    <div class="col-12">
+                        <p-table [value]="materialesEscritos!.content">
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th>CORRELATIVO</th>
+                                    <th>TITULO</th>
+                                    <th>AUTOR</th>
+                                    <th>NUMERO PAG.</th>
+                                    <th>EDITORIAL</th>
+                                    <th>ISBN</th>
+                                    <th>ANIO PUB.</th>
+                                    <th>UNIDADES DISP.</th>
+                                    <th>TIPO ARTICULOS</th>
+                                    <th>PERIODICIDAD</th>
+                                    <!--<th>FECHA PUBLICACION</th>-->
+                                    <th>TEMA</th>
+                                    <th>IDIOMA</th>
+                                    <th>INFO ADICIONAL</th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-car>
+                                <tr>
+                                    <td>{{ car.ctgMaterialEscritoCorrelativo }}</td>
+                                    <td>{{ car.ctgMaterialEscritoTitulo }}</td>
+                                    <td>{{ car.ctgMaterialEscritoAutor }}</td>
+                                    <td>{{ car.ctgMaterialEscritoNumeroPaginas }}</td>
+                                    <td>{{ car.ctgMaterialEscritoEditorial }}</td>
+                                    <td>{{ car.ctgMaterialEscritoIsbn }}</td>
+                                    <td>{{ car.ctgMaterialEscritoAnioPublicacion }}</td>
+                                    <td>{{ car.ctgMaterialEscritoUnidadesDisponibles }}</td>
+                                    <td>{{ car.ctgTipoArticulo.ctgTipoarticuloDescripcion }}</td>
+                                    <td>{{ car.ctgMaterialEscritoPeriodicidad }}</td>
+                                    <td>{{ car.ctgMaterialEscritoTema }}</td>
+                                    <td>{{ car.ctgMaterialEscritoIdioma }}</td>
+                                    <td>{{ car.ctgMaterialEscritoInformacionAdicional }}</td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </div>
+                </div>
+            </p-card>
+        </div>
+    </div>
+
+    <p-confirmDialog
+        header="Confirmation"
+        icon="pi pi-exclamation-triangle"
+    ></p-confirmDialog>
+    <p-toast></p-toast>
+</div>

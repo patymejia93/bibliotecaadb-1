@@ -1,57 +1,50 @@
 import { Injectable } from '@angular/core';
+import { ContentLimitePrestamosCreate } from '../interfaces/limitePrestamos';
 import { ContentMaterialEscrito, ContentMaterialEscritoCreate, MaterialEscrito } from '../interfaces/materialEscrito';
+import { ContentPrestamo, ContentPrestamoCreate, Prestamo } from '../interfaces/Prestamo';
 import { MaterialEscritoService } from '../services/material-escrito.service';
+import { PrestamoService } from '../services/prestamo.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MaterialEscritoControllerService {
+export class PrestamoControllerService {
 
   constructor(
-    private _matEscService: MaterialEscritoService
+    private _prestamoService: PrestamoService
 ) { }
 
-getMatEsc(): Promise<MaterialEscrito | null> {
-    return new Promise<MaterialEscrito | null>((resolve, reject) => {
-        this._matEscService.materialesEscritos().subscribe({
+getPrestamos(): Promise<Prestamo | null> {
+    return new Promise<Prestamo | null>((resolve, reject) => {
+        this._prestamoService.getPrestamos().subscribe({
             next: (response) => resolve(response),
             error: () => resolve(null)
         });
     })
 }
 
-getMatEscDisp(): Promise<MaterialEscrito | null> {
-    return new Promise<MaterialEscrito | null>((resolve, reject) => {
-        this._matEscService.materialesEscritosDisp().subscribe({
-            next: (response) => resolve(response),
-            error: () => resolve(null)
-        });
-    })
-}
-
-getMatEscBusqueda(criterio: string): Promise<MaterialEscrito | null> {
+/*getMatEscBusqueda(criterio: string): Promise<MaterialEscrito | null> {
     return new Promise<MaterialEscrito | null>((resolve, reject) => {
         this._matEscService.materialesEscritosBusqueda(criterio).subscribe({
             next: (response) => resolve(response),
             error: () => resolve(null)
         });
     })
-}
-postMatEsc(params: ContentMaterialEscritoCreate): Promise<ContentMaterialEscrito | null> {
+}*/
+postPrestamo(params: ContentPrestamoCreate): Promise<ContentPrestamo | null> {
     console.log(`params`, params)
-    return new Promise<ContentMaterialEscrito | null>((resolve, reject) => {
-        this._matEscService.create(params).subscribe({
-            next: (response: ContentMaterialEscrito) => {
+    return new Promise<ContentPrestamo | null>((resolve, reject) => {
+        this._prestamoService.create(params).subscribe({
+            next: (response: ContentPrestamo) => {
                 console.log(`response`, response)
                 resolve(response)
-                this.getMatEsc()
             },
             error: () => resolve(null)
         });
     })
 }
 
-postEditMatEsc(params: ContentMaterialEscrito): Promise<ContentMaterialEscrito | null> {
+/*postEditMatEsc(params: ContentMaterialEscrito): Promise<ContentMaterialEscrito | null> {
     console.log(`params`, params)
     return new Promise<ContentMaterialEscrito | null>((resolve, reject) => {
         this._matEscService.create(params).subscribe({
@@ -70,5 +63,5 @@ deleteMatEsc(param: number){
     return new Promise<ContentMaterialEscrito | null>((resolve, reject) => {
         this._matEscService.delete(param).subscribe();
     })
-}
+}*/
 }
